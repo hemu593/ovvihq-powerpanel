@@ -1,4 +1,0 @@
-jquery-loader
-=============
-
-jquery-loader
