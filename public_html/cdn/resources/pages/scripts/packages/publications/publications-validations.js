@@ -7,7 +7,7 @@ var Custom = function() {
     return {
         //main function
         init: function() {
-            //initialize here something.
+            //initialize here something.            
         },
 
         getModuleRecords: function(sectorName) {
@@ -105,28 +105,27 @@ var Validate = function() {
 
             },
             messages: {
-                title:{
-                    required: "Please enter the title",
+                title: {
+                    required: Lang.get('validation.required', {
+                        attribute: Lang.get('template.title')
+                    })
                 },
+
                 doc_id: {
-                    required: 'Please select the document'
+                    required: 'Document field is required.'
                 },
                 sector: {
-                    required: 'Please select the Sector'
+                    required: 'Sector field is required.'
                 },
                 start_date_time: {
-                    required: "Please select the start date",
+                    required: "Start date field is required.",
                 },
                 end_date_time: {
-                    required: "Please select the end date.",
+                    required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
                     daterange: 'The end date must be a greater than start date.'
                 },
-                varMetaTitle:{
-                    required: "Please enter the meta title",
-                },
-                varMetaDescription:{
-                    required: "Please enter the meta description",
-                },
+                varMetaTitle: { required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }) },
+                varMetaDescription: { required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }) },
                 new_password: {
                     required: Lang.get('validation.required', { attribute: 'Password' }),
                     passwordrules: 'Please follow rules for password.'
@@ -206,7 +205,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
 
     jQuery.validator.addMethod("minStrict", function(value, element) {
         // allow any non-whitespace characters as the host part

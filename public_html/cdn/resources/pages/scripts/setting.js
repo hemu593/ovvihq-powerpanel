@@ -13,8 +13,12 @@ var Setting = function() {
                 front_logo_id: "required"
             },
             messages: {
-                site_name: "Please enter the site name",
-                front_logo_id: "Please select the front logo"
+                site_name: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.siteName')
+                }),
+                front_logo_id: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.frontLogo')
+                }),
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -97,12 +101,24 @@ var Setting = function() {
                 mailer: Lang.get('validation.required', {
                     attribute: Lang.get('template.settingModule.mailerIsRequired')
                 }),
-                smtp_server: "Please enter SMTP host",
-                smtp_username: "Please enter SMTP username",
-                smtp_password: "Please enter SMTP password",
-                smtp_port: "Please enter SMTP port",
-                smtp_sender_name:"Please enter SMTP sender name",
-                smtp_sender_id: "Please enter SMTP sender id",
+                smtp_server: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtp')
+                }),
+                smtp_username: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtpUserName')
+                }),
+                smtp_password: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtpPassword')
+                }),
+                smtp_port: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtpPort')
+                }),
+                smtp_sender_name: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtpSenderName')
+                }),
+                smtp_sender_id: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.smtpSenderId')
+                }),
                 /*mail_content: Lang.get('validation.required', {
                  attribute: Lang.get('template.settingModule.mailContent')
                  }),*/
@@ -223,8 +239,12 @@ var Setting = function() {
 
             },
             messages: {
-                meta_title: "Please enter meta title",
-                meta_description: "Please enter meta description",
+                meta_title: Lang.get('validation.required', {
+                    attribute: Lang.get('template.metatitle')
+                }),
+                meta_description: Lang.get('validation.required', {
+                    attribute: Lang.get('template.metadescription')
+                }),
                 xml_file: {
                     accept: "Only *.xml file format are supported.",
                 }
@@ -592,11 +612,17 @@ var Setting = function() {
             },
             messages: {
                 max_login_attempts: {
-                    required: "Please enter the max login attempts",
+                    required: Lang.get('validation.required', {
+                        attribute: Lang.get('Max Login Attempts')
+                    }),
                     MinNumber: 'Minimum number are allow 5.'
                 },
-                retry_time_period:"Please enter the login time period",
-                lockout_time: "Please enter the lockout time"
+                retry_time_period: Lang.get('validation.required', {
+                    attribute: Lang.get('Retry Time Period')
+                }),
+                lockout_time: Lang.get('validation.required', {
+                    attribute: Lang.get('Lock Out Time')
+                }),
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -652,7 +678,9 @@ var Setting = function() {
                 },
             },
             messages: {
-                log_remove_time: "Please enter the log remove time"
+                log_remove_time: Lang.get('validation.required', {
+                    attribute: Lang.get('template.settingModule.logremovetime')
+                }),
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -727,10 +755,10 @@ var Setting = function() {
                 },
             },
             messages: {
-                Magic_Send_Email: "Please enter the magic upload email address",
-                Magic_Auth_Password: "Please enter the magic upload authentiaon password",
-                Magic_Receive_Email: "Please enter the magic upload email address",
-                Magic_Receive_Password: "Please enter the magic upload password",
+                Magic_Send_Email: "Magic upload allowed email address is required.",
+                Magic_Auth_Password: "Magic upload authentiaon password is required.",
+                Magic_Receive_Email: "Magic upload email address is required.",
+                Magic_Receive_Password: "Magic upload email password is required.",
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {

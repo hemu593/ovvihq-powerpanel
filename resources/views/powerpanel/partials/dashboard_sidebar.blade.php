@@ -93,7 +93,7 @@
                 <div class="collapse menu-dropdown {{ ((isset($menuArr['pagemenu']) && $menuArr['pagemenu'] == 'active') || (isset($menuArr['contmg']) && $menuArr['contmg'] == 'active')) ? 'show' : '' }}" id="pagemenu">
                     <ul class="nav nav-sm flex-column">
                         <!-- Pages -->
-                        @if(isset($menuArr['can-pages-list']) && isset($menuArr['can-banner-list']))
+                        @if(isset($menuArr['can-pages-list']) && $menuArr['can-banner-list'])
                             <li data-id="3" class="nav-sort nav-item">
                                 <a href="{{ url('powerpanel/pages') }}" class="nav-link {{ $menuArr['page_active'] }}" data-key="t-starter" title="{{ trans('template.sidebar.pages') }}">
                                     <i class="ri-pages-line d-none"></i> <span data-key="t-widgets">{{ trans('template.sidebar.pages') }}</span>
@@ -1090,7 +1090,7 @@
                                         <!-- User Management -->
                                         @if(isset($menuArr['can-users-list']) && $menuArr['can-users-list'])
                                             <li data-id="48" class="nav-sort nav-item">
-                                                <a href="{{ url('powerpanel/users') }}" class="nav-link {{ $menuArr['users_active'] }}" data-key="t-crm" title="{{ trans('template.sidebar.usermanagement') }}"> 
+                                                <a href="{{ url('powerpanel/users') }}" class="nav-link {{ $menuArr['events_lead_active'] }}" data-key="t-crm" title="{{ trans('template.sidebar.usermanagement') }}"> 
                                                     <i class="ri-file-user-line d-none"></i> <span data-key="t-widgets">{{ trans('template.sidebar.usermanagement') }}</span>
                                                 </a>
                                             </li>

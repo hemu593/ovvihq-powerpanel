@@ -99,7 +99,7 @@
                   <li><a class="site-insta" href="{{ Config::get('Constant.SOCIAL_INSTAGRAM_LINK') }}" title="Follow Us On Instagram"><i class="fa fa-instagram" target="_blank"></i><span>| &nbsp;Instagram</span></a></li>
                   @endif
                   @if(null!==(Config::get('Constant.SOCIAL_LINKEDIN_LINK')) && strlen(Config::get('Constant.SOCIAL_LINKEDIN_LINK')) > 0)
-                  <li><a class="site-linkedin" href="{{ Config::get('Constant.SOCIAL_LINKEDIN_LINK') }}" title="Follow Us On linkedin"><i class="fa fa-linkedin" target="_blank"></i><span>| &nbsp;Linkedin</span></a></li>
+                  <li><a class="site-insta" href="{{ Config::get('Constant.SOCIAL_LINKEDIN_LINK') }}" title="Follow Us On Instagram"><i class="fa fa-linkedin" target="_blank"></i><span>| &nbsp;Linkedin</span></a></li>
                   @endif
 
                   <li><a class="site-youtube" href="{{ Config::get('Constant.SOCIAL_YOUTUBE_LINK') }}" title="Follow Us On Youtube"><i class="fa fa-youtube" target="_blank"></i><span>| &nbsp;Youtube</span></a></li>

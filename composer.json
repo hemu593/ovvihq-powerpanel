@@ -62,7 +62,7 @@
             "Powerpanel\\FormBuilder\\": "packages/Powerpanel/FormBuilder/src",
             "Powerpanel\\FormBuilderLead\\": "packages/Powerpanel/FormBuilderLead/src",
             // "Powerpanel\\LiveUser\\": "packages/Powerpanel/LiveUser/src",
-            "Powerpanel\\Workflow\\": "packages/Powerpanel/Workflow/src",
+            // "Powerpanel\\Workflow\\": "packages/Powerpanel/Workflow/src",
             // "Powerpanel\\Banner\\": "packages/Powerpanel/Banner/src",
             // "Powerpanel\\Blogs\\": "packages/Powerpanel/Blogs/src",
             // "Powerpanel\\BlogCategory\\": "packages/Powerpanel/BlogCategory/src",

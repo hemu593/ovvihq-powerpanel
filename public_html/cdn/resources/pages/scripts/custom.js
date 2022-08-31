@@ -99,8 +99,8 @@ $(document).on("click", ".group-checkable", function() {
 // Delete button hide show of listing page
 // --------------------------------------------------- Start
 
-$(document).on("change", ".dataTables_wrapper .multiSelectList", function() {
-    var CheckedLength = $(".dataTables_wrapper .multiSelectList:checked").length;
+$(document).on("change", "#datatable_ajax_wrapper .multiSelectList", function() {
+    var CheckedLength = $("#datatable_ajax_wrapper .multiSelectList:checked").length;
 
     if(CheckedLength == 0) {
         $('.deleteMass').addClass("hide-btn-mob");

@@ -110,7 +110,6 @@ class LoginController extends PowerpanelController
             'email.exists' => 'Email not registered',
             'password' => 'required',
         ];
-
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             $email = MyLibrary::getEncryptedString($request->email);
@@ -175,48 +174,47 @@ class LoginController extends PowerpanelController
                     }
                 }
 
-                //----------------New device signed Start----------------
-                    $user = Auth::user();
-                    $agent = new Agent;
-                    if ($agent->isMobile()) {
-                        $device = $agent->device();
+//----------------New device signed Start----------------
+                $user = Auth::user();
+                $agent = new Agent;
+                if ($agent->isMobile()) {
+                    $device = $agent->device();
+                } else {
+                    $device = 'Desktop';
+                }
+                $browser = $agent->browser();
+                $version = $agent->version($browser);
+                $platform = $agent->platform();
+                $record_count = LoginLog::getRecordCount($user['id'], $this->ip, $browser, $platform, $device);
+                $location = MyLibrary::get_geolocation($this->ip);
+                $decodedLocation = json_decode($location, true);
+                $log = new LoginLog;
+                $log['fkIntUserId'] = $user['id'];
+                $log['varIpAddress'] = $this->ip;
+                $log['varCity'] = !empty($decodedLocation['city']) ? $decodedLocation['city'] : null;
+                $log['varState_prov'] = !empty($decodedLocation['state_prov']) ? $decodedLocation['state_prov'] : null;
+                $log['varCountry_name'] = !empty($decodedLocation['country_name']) ? $decodedLocation['country_name'] : null;
+                $log['varCountry_flag'] = !empty($decodedLocation['country_flag']) ? $decodedLocation['country_flag'] : null;
+                $log['varBrowser_Name'] = $browser;
+                $log['varBrowser_Version'] = $version;
+                $log['varBrowser_Platform'] = $platform;
+                $log['varDevice'] = $device;
+                $log->save();
+//                --
+
+                if ($record_count == 0) {
+                    if ($user['fkIntImgId'] != '') {
+                        $user_img = $user['fkIntImgId'];
+                        $logo_url = resize_image::resize($user_img);
                     } else {
-                        $device = 'Desktop';
+                        $logo_url = Config::get('Constant.CDN_PATH') . '/assets/images/man.png';
                     }
-                    $browser = $agent->browser();
-                    $version = $agent->version($browser);
-                    $platform = $agent->platform();
-                    $record_count = LoginLog::getRecordCount($user['id'], $this->ip, $browser, $platform, $device);
-                    $location = MyLibrary::get_geolocation($this->ip);
-                    $decodedLocation = json_decode($location, true);
-                    $log = new LoginLog;
-                    $log['fkIntUserId'] = $user['id'];
-                    $log['varIpAddress'] = $this->ip;
-                    $log['varCity'] = !empty($decodedLocation['city']) ? $decodedLocation['city'] : null;
-                    $log['varState_prov'] = !empty($decodedLocation['state_prov']) ? $decodedLocation['state_prov'] : null;
-                    $log['varCountry_name'] = !empty($decodedLocation['country_name']) ? $decodedLocation['country_name'] : null;
-                    $log['varCountry_flag'] = !empty($decodedLocation['country_flag']) ? $decodedLocation['country_flag'] : null;
-                    $log['varBrowser_Name'] = $browser;
-                    $log['varBrowser_Version'] = $version;
-                    $log['varBrowser_Platform'] = $platform;
-                    $log['varDevice'] = $device;
-                    $log->save();
-
-                    if ($record_count == 0) {
-                        if ($user['fkIntImgId'] != '') {
-                            $user_img = $user['fkIntImgId'];
-                            $logo_url = resize_image::resize($user_img);
-                        } else {
-                            $logo_url = Config::get('Constant.CDN_PATH') . '/assets/images/man.png';
-                        }
-                        $msg = $browser . ' ' . $platform . ' ' . $device;
-                        $email = MyLibrary::getDecryptedString($user['email']);
-                        $personalemail = MyLibrary::getDecryptedString($user['personalId']);
-                        Email_sender::Security_alert($email, $personalemail, $user['name'], $logo_url, $msg, $log->id);
-                    }
-                //----------------New device signed End----------------
-
-
+                    $msg = $browser . ' ' . $platform . ' ' . $device;
+                    $email = MyLibrary::getDecryptedString($user['email']);
+                    $personalemail = MyLibrary::getDecryptedString($user['personalId']);
+                    Email_sender::Security_alert($email, $personalemail, $user['name'], $logo_url, $msg, $log->id);
+                }
+//----------------New device signed End----------------
                 //----------------Two Factor Authentication Start----------------
                 if (Config::get('Constant.DEFAULT_AUTHENTICATION') == 'Y') {
                     $userEmailID = $auth->user()['email'];
@@ -249,9 +247,7 @@ class LoginController extends PowerpanelController
                         Session::put('Authentication_User', $user_data['chrAuthentication']);
                     }
                 }
-                //----------------Two Factor Authentication End----------------
-
-
+//----------------Two Factor Authentication End----------------
                 $userIsAdmin = false;
                 $currentUserRoleData = Mylibrary::getCurrentUserRoleDatils();
                 if (!empty($currentUserRoleData)) {
@@ -268,14 +264,14 @@ class LoginController extends PowerpanelController
                         return redirect('powerpanel/login')->with('message', 'You are not allowed to login as workflow is not designed for your account. Please contact to the website administrator for more information.');
                     }
                 }
-
+                
                 //$userSector = Role::getRecordById(Role_user::getRecordBYModelId($userid)->role_id)->varSector;
                 //Session::put('USERROLESECTOR', $userSector);
 
                 Session::put('USERROLEDATA', $currentUserRoleData);
                 Session::put('loghistory_id', $log->id);
                 return $this->sendLoginResponse($request);
-
+                
             } else {
                 $exitsUserPassword = User::where('password', '=', $request->password)->where('email', '=', $email)->first();
                 if (empty($exitsUserEmail)) {

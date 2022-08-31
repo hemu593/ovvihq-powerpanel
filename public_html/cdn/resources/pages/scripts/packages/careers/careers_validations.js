@@ -32,6 +32,12 @@ var Validate = function() {
                     no_url: true,
                     checkallzero: true,
                 },
+                // refNo: {
+                //     required: true,
+                //     noSpace: true,
+                //     xssProtection: true,
+                //     no_url: true
+                // },
                 employmentType: {
                     required: true,
                     noSpace: true,
@@ -126,46 +132,40 @@ var Validate = function() {
                 },
             },
             messages: {
-                title:{
-                    required: "Please enter the title",
-                },
-                sector: "Please select sector type.",
-                rollType: "Please select roll-type.",
-                webType: "Please select website type.",
+                title: { required: Lang.get('validation.required', { attribute: Lang.get('template.title') }) },
+                jobCategory: "Please Select Job Category.",
+                sector: "Please Select Sector Type.",
+                rollType: "Please Select Roll-Type.",
+                webType: "Please Select Website Type.",
                 salary: {
-                    required: "Please enter salary range",
-                    noSpace: "Spaces are not allowed",
-                    checkallzero: "Please enter valid salary range",
+                    required: "Please Enter Salary Range",
+                    noSpace: "Spaces Are Not Allowed",
+                    checkallzero: "Please enter valid Salary Range",
+                    // min: "Nagative Value Not Allowed , Value must be Greater Than 0 (zero)",
                 },
-                employmentType: "Please select employment type.",
+                employmentType: "Please select employment Type.",
                 position: {
-                    required: "Please enter position",
-                    digits: "Only numeric value allowed",
-                    noSpace: "Spaces are not allowed",
-                    maxlength: "You can enter max 3 digit(s) number"
+                    required: "Please Enter Position",
+                    digits: "Only Numeric value Allowed",
+                    noSpace: "Spaces Are Not Allowed",
+                    maxlength: "You Can Enter Max 3 Digit(s) number"
                 },
                 experience: {
-                    required: "Please enter your experience",
-                    digits: "Only numeric value allowed",
-                    noSpace: "Spaces are not allowed",
-                    maxlength: "You can enter max 5 digit(s) number"
+                    required: "Please Enter Your Experience",
+                    digits: "Only Numeric value Allowed",
+                    noSpace: "Spaces Are Not Allowed",
+                    maxlength: "You Can Enter Max 5 Digit(s) number"
                 },
                 category_id: "Please select category.",
                 description: "Description field is required.",
-                order: {
-                    required: "Display order must be a number greater than zero (0)"
-                },
-                varMetaTitle:{
-                    required: "Please enter the meta title",
-                },
-                varMetaDescription:{
-                    required: "Please enter the meta description",
-                },
+                order: { required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') }) },
+                varMetaTitle: { required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }) },
+                varMetaDescription: { required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }) },
                 start_date_time: {
-                    required: "Please select the start date",
+                    required: "Start date field is required.",
                 },
                 end_date_time: {
-                    required: "Please select the end date.",
+                    required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
                     daterange: 'The end date must be a greater than start date.'
                 },
                 new_password: {
@@ -231,7 +231,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
     var isChecked = $('#careers_end_date').attr('data-exp');
     if (isChecked == 1) {
         $('.expdatelabel').removeClass('no_expiry');
@@ -244,7 +244,9 @@ jQuery(document).ready(function() {
         $('#careers_end_date').removeAttr('disabled');
     }
 });
-
+jQuery(document).ready(function() {
+    
+});
 
 jQuery.validator.addMethod("twodecimal", function(value, element) {
     return this.optional(element) || /^\d{0,4}(\.\d{0,2})?$/i.test(value);
@@ -269,8 +271,14 @@ jQuery.validator.addMethod("daterange", function(value, element) {
 
 jQuery.validator.addMethod("phoneFormat", function(value, element) {
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter phone number in valid format');
-
+}, 'Please enter a valid phone number.');
+jQuery.validator.addMethod("noSpace", function(value, element) {
+    if (value.trim().length <= 0) {
+        return false;
+    } else {
+        return true;
+    }
+}, "This field is required");
 jQuery.validator.addMethod("minStrict", function(value, element) {
     if (value > 0) {
         return true;

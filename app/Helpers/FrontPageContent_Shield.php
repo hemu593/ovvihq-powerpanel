@@ -2716,7 +2716,8 @@ class FrontPageContent_Shield
 
         $fields = Self::selectFields($config);
         if (File::exists(base_path() . '/packages/Powerpanel/Blogs/src/Models/Blogs.php') != null) {
-            $fill = \Powerpanel\Blogs\Models\Blogs::getAllBlogs($fields, $limit, $sdate, $edate, $blogscat);            
+            $fill = \Powerpanel\Blogs\Models\Blogs::getAllBlogs($fields, $limit, $sdate, $edate, $blogscat);
+
             if (!empty($fill)) {
                 $data = [
                     'title' => $title,

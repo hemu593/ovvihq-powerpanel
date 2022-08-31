@@ -10,11 +10,11 @@ var TableDatatablesAjax = function() {
                 if (response.recordsTotal < 1) {
                     $('.deleteMass').hide();
                     $("#menu1.tab-pane .notabreocrd").show();
-					$("#menu1.tab-pane .withrecords").hide();
+										$("#menu1.tab-pane .withrecords").hide();
                 } else {
                     $('.deleteMass').show();
                     $("#menu1.tab-pane .notabreocrd").hide();
-					$("#menu1.tab-pane .withrecords").show();
+										$("#menu1.tab-pane .withrecords").show();
                 }
 
                 if(response.recordsTotal < 20) {

@@ -107,24 +107,23 @@ var Validate = function () {
                 foritem: {required: true, noSpace: true},
             },
             messages: {
-                title:{
-                    required: "Please enter the title",
-                },
-                modules: {
-                    required: "Please select the module",
-                },
+                title:{required: Lang.get('validation.required', {attribute: Lang.get('template.title')})},
+                modules: Lang.get('validation.required', {attribute: Lang.get('template.module')}),
                 foritem: Lang.get('validation.required', {attribute: Lang.get('template.page')}),
                 display_order: {
-                    required: "Display order must be a number greater than zero (0)"
+                    required: Lang.get('validation.required', {attribute: Lang.get('template.displayorder')}),
+                    minStrict: Lang.get('validation.minStrict', {attribute: Lang.get('template.displayorder')}),
+                    number: Lang.get('validation.number', {attribute: Lang.get('template.displayorder')}),
+                    noSpace: Lang.get('validation.noSpace', {attribute: Lang.get('template.displayorder')})
                 },
                 ext_Link: {
-                    required: "Please enter the external link",
+                    required: "External Link is required.",
                 },
                 start_date_time: {
-                    required: "Please select the start date",
+                    required: "Start date field is required.",
                 },
                 end_date_time: {
-                    required: "Please select the end date.",
+                    required: Lang.get('validation.required', {attribute: Lang.get('template.enddate')}),
                     daterange: 'The end date must be a greater than start date.'
                 },
             },
@@ -192,7 +191,7 @@ jQuery(document).ready(function () {
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {
@@ -221,6 +220,13 @@ jQuery.validator.addMethod("minStrict", function (value, element) {
     }
 }, 'Display order must be a number higher than zero');
 
+jQuery.validator.addMethod("noSpace", function (value, element) {
+    if (value.trim().length <= 0) {
+        return false;
+    } else {
+        return true;
+    }
+}, "This field is required");
 $('input[name=title]').change(function () {
     var title = $(this).val();
     var trim_title = title.trim();

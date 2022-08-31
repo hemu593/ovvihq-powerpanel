@@ -35,12 +35,16 @@ var Validate = function() {
             },
             messages: {
                 name: {
-                    required: "Please enter the name"
+                    required: Lang.get('validation.required', {
+                        attribute: Lang.get('template.name')
+                    })
                 },
-                email: {
-                    required:"Please enter the address"
+                address: {
+                    required: Lang.get('validation.required', {
+                        attribute: Lang.get('template.contactModule.address')
+                    })
                 },
-                mailingaddress: { required: "Please enter the Mailing address" },
+                mailingaddress: { required: "Mailing address field is required." },
             },
             invalidHandler: function(event, validator) { //display error alert on form submit
                 var errors = validator.numberOfInvalids();
@@ -93,7 +97,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
 });
 jQuery.validator.addMethod("phoneFormat", function(value, element) {
     // allow any non-whitespace characters as the host part
@@ -227,7 +231,7 @@ function load_validation() {
                 email: true,
                 noSpace: true,
                 messages: {
-                    required: "Please enter the email",
+                    required: "Email field is required.",
                 }
             });
         }

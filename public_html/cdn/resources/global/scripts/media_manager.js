@@ -3591,9 +3591,9 @@ var MediaManager = (function() {
         },
         saveCroppedImage: function(image, image_id, overwrite, image_folderid) {
             $("body").loader(loaderConfig);
-            // $("#save_as_new").off("click");
-            // $("#save_and_overwrite").off("click");
-            
+            $("#save_as_new").off("click");
+            $("#save_and_overwrite").off("click");
+
             $.ajax({
                 type: "POST",
                 cache: true,

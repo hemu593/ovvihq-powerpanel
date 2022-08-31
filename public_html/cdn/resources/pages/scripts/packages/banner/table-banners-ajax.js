@@ -55,7 +55,15 @@ var TableDatatablesAjax = function() {
             dataTable: {
                 "dom": "t <'gridjs-footer' <'gridjs-pagination'i <'gridjs-pages'p>>>",
                 "deferRender": true,
-                 
+                 drawCallback:function(){
+                    var $api = this.api();
+                    var pages = $api.page.info().pages;
+                    var rows = $api.data().length;
+                    if(pages<=1){
+                        $('.dataTables_info').css('display','none');
+                        $('.dataTables_paginate').css('display','none');
+                    }
+                },
                 // "stateSave": true, // save datatable state(pagination, sort, etc) in cookie.
                 // "lengthMenu": [
                 //     [10, 20, 50, 100],

@@ -83,7 +83,7 @@
                 if (accepted == 'N')
                 {
                     $('#tncpopup').modal({
-                        backdrop: 'static'
+                        backdrop: 'static',
                     });
                     $(document).bind("contextmenu", function (e) {
                         return false;
@@ -92,7 +92,7 @@
             }
         </script>
         <script type="text/javascript">
-            var time_in_minutes = 5;//{!!  Config::get('Constant.DEFAULT_Authentication_TIME')  !!};
+            var time_in_minutes = {!!  Config::get('Constant.DEFAULT_Authentication_TIME')  !!};
             var current_time = Date.parse(new Date());
             var deadline = new Date(current_time + time_in_minutes * 60 * 1000);
             function time_remaining(endtime) {

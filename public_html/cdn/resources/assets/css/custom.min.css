@@ -334,8 +334,6 @@ table.lastchild-border-0 tr:last-child td { border-bottom: 0 }
 .gallary_manager.portlet.portlet-fullscreen .right-panel .contains_thumb .img-btns a .ri-check-line { font-size: 16px }
 .gallary_manager.portlet.portlet-fullscreen .right-panel .contains_thumb:hover .img-btns{ opacity: 1; }
 [data-layout-mode=dark] .gallary_manager.portlet.portlet-fullscreen .right-panel .contains_thumb .thumbnail { background: var(--vz-body-bg); }
-.gallary_manager.portlet.portlet-fullscreen .right-panel .contains_thumb.img-box-active .icon-check {position: absolute;right: 7px;top: 7px;font-family: remixicon!important; content: ""; background: #fff; z-index: 2; width: 18px; height: 18px; color: #000; font-size: 14px; border-radius: 100%; line-height: 18px;}
-.gallary_manager.portlet.portlet-fullscreen .right-panel .contains_thumb.img-box-active .icon-check:before { content: "\eb7b";}
 .gallary_manager .title-change { position: relative; }
 .gallary_manager .title-change .form-control { border-radius: 0 }
 .gallary_manager .title-change .btn { position: absolute !important; right: 0px; top: 0px; width: 32px; height: 100%; padding: 0px; text-align: center; box-shadow: none !important; border-left: 0px solid transparent; line-height: 35px; background: #394958; color: #ffffff;}
@@ -759,7 +757,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .fg-emoji-picker-category-title { margin-top: 10px !important }
 .fg-picker-special-buttons a { background-color: #2e3a46 !important  }
 .fg-picker-special-buttons a:hover { background-color: #e9ebf1 !important  }
-.chat-input-links .links-list-item>.btn.emoji-btn { width: auto; height: auto; }
 .crop-imginfo .input-group-text { background: none; min-width: 135px; }
 .ic-rotate { transform: rotate(160deg); -webkit-transform: rotate(160deg); display: inline-block; }
 

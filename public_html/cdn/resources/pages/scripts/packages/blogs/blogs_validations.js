@@ -83,36 +83,26 @@ var Validate = function () {
                 img_id: "required",
             },
             messages: {
-                title:{
-                    required: "Please enter the title",
-                },
-                category_id: {
-                    required:"Please select the blog category"
-                },
-                short_description:{
-                    required: "Please enter the short description"
-                },
-                order: {
-                    required: "Display order must be a number greater than zero (0)"
-                },
+                // title:{required: Lang.get('validation.required', {attribute: Lang.get('template.title')})},
+                title:"Please enter title.",
+                category_id: "Please select category.",
+                short_description:{required: "Please enter short description."},
+                order: {required: Lang.get('validation.required', {attribute: Lang.get('template.displayorder')})},
+                varMetaTitle:{required: Lang.get('validation.required', {attribute: Lang.get('template.metatitle')})},
+                varMetaDescription:{required: Lang.get('validation.required', {attribute: Lang.get('template.metadescription')})},
                 start_date_time: {
-                    required: "Please select the start date",
+                    required: "Please select start date.",
                 },
                 end_date_time: {
-                    required: "Please select the end date",
+                    required: Lang.get('validation.required', {attribute: Lang.get('template.enddate')}),
                     daterange: 'The end date must be a greater than start date.'
                 },
                 new_password: {
                     required: Lang.get('validation.required', {attribute: 'Password'}),
-                    passwordrules: 'Please follow rules for password'
+                    passwordrules: 'Please follow rules for password.'
                 },
-                varMetaTitle:{
-                    required: "Please enter the meta title",
-                },
-                varMetaDescription:{
-                    required: "Please enter the meta description",
-                },
-                img_id: "Please select featured image",
+                // img_id: Lang.get('validation.required', {attribute: Lang.get('template.image')}),
+                img_id: "Please select featured image.",
             },
             errorPlacement: function (error, element) {
                 if (element.parent('.input-group').length) {
@@ -165,10 +155,15 @@ var Validate = function () {
         }
     };
 }();
-
 jQuery(document).ready(function () {
     Validate.init();
-
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+        if (value.trim().length <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }, "This field is required");
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {
         $('.expdatelabel').removeClass('no_expiry');
@@ -203,27 +198,25 @@ jQuery.validator.addMethod("daterange", function (value, element) {
     } else {
         return true;
     }
-}, "The end date must be a greater than start date");
+}, "The end date must be a greater than start date.");
 
 jQuery.validator.addMethod("phoneFormat", function (value, element) {
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter phone number in valid format');
-
+}, 'Please enter a valid phone number.');
 jQuery.validator.addMethod("noSpace", function (value, element) {
     if (value.trim().length <= 0) {
         return false;
     } else {
         return true;
     }
-}, "Please enter the valid input, Space not allowed");
-
+}, "This field is required");
 jQuery.validator.addMethod("minStrict", function (value, element) {
     if (value > 0) {
         return true;
     } else {
         return false;
     }
-}, 'Display order must be a number greater than zero (0)');
+}, 'Display order must be a number higher than zero');
 
 jQuery.validator.addMethod("avoidonlyzero", function (value, element) {
     var newVal = value;
@@ -234,7 +227,7 @@ jQuery.validator.addMethod("avoidonlyzero", function (value, element) {
     {
         return true;
     }
-}, "Please enter a valid input");
+}, "Please enter a valid value.");
 
 $('input[type=text]').change(function () {
     var input = $(this).val();

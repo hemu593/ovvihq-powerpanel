@@ -16,9 +16,23 @@ var Validate = function() {
                     xssProtection: true,
                     no_url: true
                 },
+                // start_date_time: {
+                //     required: true,
+                // },
                 sector: {
                     required: true,
                 },
+                // end_date_time: {
+                //     daterange: true,
+                //     required: {
+                //         depends: function() {
+                //             var isChecked = $('#end_date_time').attr('data-exp');
+                //             if (isChecked == 0) {
+                //                 return $('input[name=end_date_time]').val().length == 0;
+                //             }
+                //         }
+                //     }
+                // },
                 parent_category_id: {
                     required: true,
                 },
@@ -30,6 +44,18 @@ var Validate = function() {
                     xssProtection: true,
                     no_url: true
                 },
+                // varMetaTitle: {
+                //     required: true,
+                //     noSpace: true,
+                //     xssProtection: true,
+                //     no_url: true
+                // },
+                // varMetaDescription: {
+                //     required: true,
+                //     noSpace: true,
+                //     xssProtection: true,
+                //     no_url: true
+                // },
                 new_password: {
                     required: {
                         depends: function() {
@@ -51,17 +77,29 @@ var Validate = function() {
                     },
                     minlength: 6,
                     maxlength: 20
-                }
+                },
+                // 'new-alias': {
+                //     specialCharacterCheck: true,
+                // },
             },
             messages: {
                 title: {
-                    required: "Please enter the title",
+                    required: Lang.get('validation.required', { attribute: Lang.get('template.title') })
                 },
                 sector: { required: "Sector field is required" },
-                parent_category_id: { required: "Please select category" },
+                parent_category_id: { required: "Please Select Category field" },
                 display_order: {
-                    required: "Display order must be a number greater than zero (0)"
+                    required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') })
                 },
+                // varMetaTitle: { required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }) },
+                // varMetaDescription: { required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }) },
+                // start_date_time: {
+                //     required: "Start date field is required.",
+                // },
+                // end_date_time: {
+                //     required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
+                //     daterange: 'The end date must be a greater than start date.'
+                // },
                 new_password: {
                     required: Lang.get('validation.required', { attribute: 'Password' }),
                     passwordrules: 'Please follow rules for password.'
@@ -121,13 +159,16 @@ var Validate = function() {
 jQuery(document).ready(function() {
     Validate.init();
 
+    // $("#varSector").rules('add', {
+    //     required: true
+    // });
     jQuery.validator.addMethod("noSpace", function(value, element) {
         if (value.trim().length <= 0) {
             return false;
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {

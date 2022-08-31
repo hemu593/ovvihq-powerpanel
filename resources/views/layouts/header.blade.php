@@ -30,12 +30,17 @@
 
     <!-- OG Meta S -->
     @php
+
         if(isset($ogImage) && !empty($ogImage)) {
+
             $og_Image = $ogImage;
 
         } else {
+
             $og_Image =  $CDN_PATH.'assets/images/logoshare.png';
+
         }
+
     @endphp
     <meta property="og:url" content="{{ Request::Url() }}" />
     <meta property="og:type" content="website" />
@@ -74,6 +79,8 @@
 
 <body>
 
+
+
     @if(Request::segment(1) == '')   
         <div class="ac-loader">
             <div class="ac-loader__container">
@@ -83,12 +90,22 @@
 
     @endif
 
+    {{-- <div class="page-loader">
+        <div class="-title">Online Payment is proceeding</div>
+        <div class="-stitle">Please Note: Do not close the browser tab or browser.</div>
+    </div> --}}
 
     <!-- Browser Upgrade S -->
     <div id="buorg" class="buorg">
         <div class="buorg__text"><i class="ri-alert-fill"></i> For a better view on
             {{ Config::get("Constant.SITE_NAME") }}, <a href="https://support.microsoft.com/en-us/help/17621/internet-explorer-downloads" title="Update Your Browser" target="_blank" rel="nofollow">Update Your Browser.</a></div>
     </div>
-    <!-- Browser Upgrade E -->  
+    <!-- Browser Upgrade E -->
+
+    <!-- Scroll To Top S -->
+    <div id="back-top" title="Scroll To Top" style="display: none;">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <!-- Scroll To Top E -->
 
     <div id="wrapper">

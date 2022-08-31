@@ -41,25 +41,27 @@ var Validate = function () {
 										passwordrules: isPasswordrule,
 										minlength: isMinlength,
 										maxlength: isMaxlength,
+																																							
 								},
 								'confirm-password': {
-										required: isRequired,
+										required: isRequired,                   
 										minlength: isMinlength,
 										maxlength: isMaxlength,
 										equalTo: isEqualTo,
+																																								
 								},
 								'roles[]': {required: true}
 						},
 						messages: {
-								name:"Please enter the name",
-								email:"Please enter the email",
+								name:{required: Lang.get('validation.required', {attribute: Lang.get('template.userModule.userName')})},
+								email:{required: Lang.get('validation.required', {attribute: Lang.get('template.userModule.userEmail')})},
 								password: {
-										required: "Please enter the password",
+										required: Lang.get('validation.required', {attribute: Lang.get('template.userModule.userPassword')}),
 										passwordrules: 'Please follow rules for password.',
-										minlength:"Password must be at least 6 characters.",
+										minlength:"Password must be at least 6 characters.",									
 								},
 								'confirm-password': {
-										required: "Please enter the confirm password",
+										required: Lang.get('validation.required', {attribute: Lang.get('template.userModule.confirmPassord')}),
 										passwordrules: 'Please follow rules for password.',
 										equalTo: 'Password and confirm password should match',
 										minlength:"Password must be at least 6 characters.",
@@ -118,8 +120,8 @@ jQuery(document).ready(function () {
 				} else {
 						return true;
 				}
-			}, "Please enter the valid input, Space not allowed");
-		});
+		}, "This field is required");
+});
 jQuery.validator.addMethod("phoneFormat", function (value, element) {
 		// allow any non-whitespace characters as the host part
 		return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);

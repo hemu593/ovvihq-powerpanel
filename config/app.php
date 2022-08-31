@@ -206,7 +206,7 @@ return [
         Powerpanel\FormBuilder\Providers\FormBuilderServiceProvider::class,
         Powerpanel\FormBuilderLead\Providers\FormBuilderLeadServiceProvider::class,
         // Powerpanel\LiveUser\Providers\LiveUserServiceProvider::class,
-        Powerpanel\Workflow\Providers\WorkflowServiceProvider::class,
+        // Powerpanel\Workflow\Providers\WorkflowServiceProvider::class,
         // Powerpanel\Banner\Providers\BannerServiceProvider::class,
         // Powerpanel\Blogs\Providers\BlogsServiceProvider::class,
         // Powerpanel\BlogCategory\Providers\BlogCategoryServiceProvider::class,

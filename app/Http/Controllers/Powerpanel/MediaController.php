@@ -1257,15 +1257,15 @@ class MediaController extends PowerpanelController
 
                     if ($this->filePathExist($img_path)) {
                         $Image_html .= "<div class='img-box contains_thumb' id='media_" . $value->id . "'>
-                            <div class='thumbnail_container'>
-                            <div class='thumbnail' id='media_image_" . $value->id . "'>
-                            <a  title='" . $value->txtImgOriginalName . "' href='javascript:void(0);' onclick=\"MediaManager.selectRecentUploadImage('" . $value->id . "')\" >
-                            <img alt='" . $value->txtImgOriginalName . "' src='" . $imageurl . "'>
-                            <span class='icon-check' aria-hidden='true'></span>
-                            </a>
-                            </div>
-                            </div>
-                            <a class='right_check' href='javascript:void(0)' ><i class=''></i></a>";
+																				 <div class='thumbnail_container'>
+																							<div class='thumbnail' id='media_image_" . $value->id . "'>
+																						 <a  title='" . $value->txtImgOriginalName . "' href='javascript:void(0);' onclick=\"MediaManager.selectRecentUploadImage('" . $value->id . "')\" >
+																								 <img alt='" . $value->txtImgOriginalName . "' src='" . $imageurl . "'>
+																								 <span class='icon-check' aria-hidden='true'></span>
+																																																									</a>
+																									</div>
+																								</div>
+																								<a class='right_check' href='javascript:void(0)' ><i class=''></i></a>";
                         $Image_html .= "<div class='img-btns'>";
                         $Image_html .= "<a href='javascript:;' title='Image Detail' onclick=\"MediaManager.getImageDetails('" . $value->id . "');\"><span class='icon icon-info'></span></a>";
 
@@ -1958,7 +1958,7 @@ class MediaController extends PowerpanelController
     public static function clean($string)
     {
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-        return preg_replace('^[\w,\s-]+\.[A-Za-z]{3}$', '', $string); // Removes special chars.
+        return preg_replace('/[^A-Za-z0-9\-.]/', '', $string); // Removes special chars.
     }
 
     public function is_url_exist($url)

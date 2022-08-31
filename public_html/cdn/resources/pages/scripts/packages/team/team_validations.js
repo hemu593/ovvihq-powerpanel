@@ -58,26 +58,32 @@ var Validate = function() {
                 }
             },
             messages: {
-                title:{
-                    required: "Please enter the title",
+                title: Lang.get('validation.required', {
+                    attribute: Lang.get('template.name')
+                }),
+                sector: {
+                    required: "Sector field is required"
                 },
-                sector: { required: "Please select the sector type" },
                 phone_no: {
                     minlength: 'Phone number must be at least 6 Digit long',
                     maxlength: 'Phone number must be less then 20 Digit'
                 },
+
+
                 order: {
-                    required: "Display order must be a number greater than zero (0)"
+                    required: Lang.get('validation.required', {
+                        attribute: Lang.get('template.displayorder')
+                    })
                 },
-                varMetaTitle:{
-                    required: "Please enter the meta title",
-                },
-                varMetaDescription:{
-                    required: "Please enter the meta description",
-                },
-                varMetaKeyword:{
-                    required: "Please enter the meta keyword",
-                },
+                varMetaTitle: Lang.get('validation.required', {
+                    attribute: Lang.get('template.metatitle')
+                }),
+                varMetaKeyword: Lang.get('validation.required', {
+                    attribute: Lang.get('template.metakeyword')
+                }),
+                varMetaDescription: Lang.get('validation.required', {
+                    attribute: Lang.get('template.metadescription')
+                })
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -178,7 +184,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "Please enter the valid input, Space not allowed");
+    }, "This field is required");
 });
 $.validator.addMethod("phonenumber", function(value, element) {
 
@@ -195,12 +201,13 @@ $.validator.addMethod("phonenumber", function(value, element) {
     }
 
 }, 'Please enter a valid phone number.');
-
+/*jQuery.validator.addMethod("urlFormat", function(url) {
+ return /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(url);
+ },'Enter valid url format');*/
 jQuery.validator.addMethod("emailFormat", function(value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(value);
 }, 'Enter valid email format');
-
 jQuery.validator.addMethod("minStrict", function(value, element) {
     // allow any non-whitespace characters as the host part
     if (value > 0) {
@@ -209,7 +216,6 @@ jQuery.validator.addMethod("minStrict", function(value, element) {
         return false;
     }
 }, 'Display order must be a number higher than zero');
-
 $('input[type=text]').on('change', function() {
     var input = $(this).val();
     var trim_input = input.trim();

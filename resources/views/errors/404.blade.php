@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center" >
                     <div class="nqtitle n-fw-800 n-lh-110 text-uppercase"><span>4<span><img src="{{ $CDN_PATH.'assets/images/404-logo.png' }}"></span>4</span> <br/>Oops! Something's missing...</div>
-                    <div class="desc n-mt-15 n-mt-lg-30">You may have mis-typed the URL or the page has been removed. <br>Actually, there is nothing to see here...</div>
+                    <div class="desc n-mt-15 n-mt-lg-30">You may have mis-typed the URL. Or the page has been removed. <br>Actually, there is nothing to see here...</div>
                     <div class="n-mt-15 notfd-content">Click on the links below to do something, Thanks!</div>
                     <a href="{{ url('/') }}" title="Back to Home" class="ac-btn ac-btn-primary text-uppercase n-mt-15 n-mt-lg-30">Back to Home</a>
                 </div>

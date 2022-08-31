@@ -113,8 +113,6 @@ class FrontController extends Controller
                         $activeclass = "active";
                     } else if ($currenturl == $row['txtPageUrl']) {
                         $activeclass = "active";
-                    } else if ($currenturl == '/' && $row['txtPageUrl'] == '/home') {
-                        $activeclass = "active";
                     } else {
                         $activeclass = '';
                     }
