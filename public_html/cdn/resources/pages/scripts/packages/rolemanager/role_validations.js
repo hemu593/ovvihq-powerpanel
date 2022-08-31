@@ -29,13 +29,13 @@ var Validate = function() {
             },
             messages: {
                 name: {
-                    requied: "Name is required"
+                    requied: "Please enter the name"
                 },
                 sector: {
-                    requied: "Sector is required"
+                    requied: "Please select the sector type"
                 },
-                display_name: "Display name is required",
-                permission: "Permission is required"
+                display_name: "Please enter the display name",
+                permission: "Please select the Permissions"
 
             },
             errorPlacement: function(error, element) {
@@ -131,7 +131,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     $.each($('.grp-sec .module-activation'), function() {
         if ($(this).prop('checked')) {

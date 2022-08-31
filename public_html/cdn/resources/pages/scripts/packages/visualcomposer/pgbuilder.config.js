@@ -12147,10 +12147,10 @@ var validateAddColumnForm = function() {
             },
             messages: {
                 no_of_column: {
-                    required: "Please select no of column(s)"
+                    required: "Please select the no of column(s)"
                 },
                 column_class: {
-                    required: "Class is required"
+                    required: "Please enter the column class"
                 },
             },
             errorPlacement: function(error, element) {
@@ -12212,7 +12212,7 @@ var validateEditRowForm = function() {
             },
             messages: {
                 column_class: {
-                    required: "Class is required"
+                    required: "Please enter the class"
                 },
             },
             errorPlacement: function(error, element) {
@@ -12276,7 +12276,7 @@ var validateEditColRowForm = function() {
             },
             messages: {
                 column_class: {
-                    required: "Class is required"
+                    required: "Please enter the class"
                 },
             },
             errorPlacement: function(error, element) {
@@ -12479,13 +12479,13 @@ var validateSectionOnlyImage = function() {
             },
             messages: {
                 img_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 img1: {
-                    required: "Image is required",
+                    required: "Please select the Image",
                 },
                 selector: {
-                    required: "Alignment is required",
+                    required: "Please select the alignment",
                 }
             },
             errorPlacement: function(error, element) {
@@ -12553,8 +12553,8 @@ var validateSectionOnlyDocument = function() {
                 }
             },
             messages: {
-                img1: "Document is required",
-                caption: "Caption is required"
+                img1: "Please select the document",
+                caption: "Please enter the caption"
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -12612,7 +12612,7 @@ var validateSectionGalleryImage = function() {
             rules: {
                 img_id: {
                     required: {
-                        //                                            if($('#frmSectionGalleryImage input[name="img_id"]').val() != '' || $('#frmSectionGalleryImage input[name="editing"]').val().length == 0){
+                        // if($('#frmSectionGalleryImage input[name="img_id"]').val() != '' || $('#frmSectionGalleryImage input[name="editing"]').val().length == 0){
                         depends: function() {
                             return $('#frmSectionGalleryImage input[name="editing"]').val().length == 0;
                         }
@@ -12622,8 +12622,8 @@ var validateSectionGalleryImage = function() {
             },
             messages: {
                 img_id: {
-                    required: "Photo is required",
-                    max6: "Please select six or less photos"
+                    required: "Please select the Image",
+                    max6: "Please select six or less Images"
                 }
             },
             errorPlacement: function(error, element) {
@@ -12708,10 +12708,10 @@ var validatesectionMap = function() {
             },
             messages: {
                 img_latitude: {
-                    required: "Latitude is required",
+                    required: "Please enter the latitude",
                 },
                 img_longitude: {
-                    required: "Longitude is required",
+                    required: "Please enter the longitude",
                 },
             },
             errorPlacement: function(error, element) {
@@ -12809,14 +12809,14 @@ var validateSectionContactInfo = function() {
             },
             messages: {
                 section_address: {
-                    required: "Address is required",
+                    required: "Please enter the address",
                 },
                 section_email: {
-                    required: "Email is required",
-                    email: "Enter valid Email"
+                    required: "Please enter the email",
+                    email: "Please enter the email address in a valid format"
                 },
                 section_phone: {
-                    required: "Phone is required",
+                    required: "Please enter the phone number",
                 },
             },
             errorPlacement: function(error, element) {
@@ -12907,14 +12907,14 @@ var validateSectionButton = function() {
                     required: "Please enter the title",
                 },
                 section_button_target: {
-                    required: "Link target is required",
+                    required: "Please enter the link target",
                 },
                 section_link: {
-                    required: "Link is required",
-                    url: "Please enter valid Link"
+                    required: "Please enter the link",
+                    url: "Please enter the valid Link"
                 },
                 selector: {
-                    required: "Alignment is required",
+                    required: "Please select the alignment",
                 }
             },
             errorPlacement: function(error, element) {
@@ -12986,8 +12986,8 @@ var validateSectionOnlyVideo = function() {
 
             },
             messages: {
-                title: "Caption is required",
-                video_id: "Video Embed URL is required"
+                title: "Please enter the caption",
+                video_id: "Please enter the video embed URL"
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -13189,10 +13189,10 @@ var validateSectionTwoContent = function() {
             },
             messages: {
                 leftcontent: {
-                    required: "Left side content is required",
+                    required: "Please enter the left side content",
                 },
                 rightcontent: {
-                    required: "Right side content is required",
+                    required: "Please enter the right side content",
                 },
             },
             errorPlacement: function(error, element) {
@@ -13274,17 +13274,17 @@ var validateSectionImage = function() {
             },
             messages: {
                 img_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 content: {
-                    required: "Content is required",
+                    required: "Please enter the content",
                 },
                 selector: {
-                    required: "Alignment is required",
+                    required: "Please select the alignment",
                 },
                 img1: {
-                    required: "Image is required",
-                },
+                    required: "Please select the Image",
+                }
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -13373,16 +13373,16 @@ var validateSectionVideoContent = function() {
             },
             messages: {
                 title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 video_id: {
-                    required: "Video Embed Url is required",
+                    required: "Please enter the video embed Url",
                 },
                 content: {
-                    required: "Content is required",
+                    required: "Please enter the content",
                 },
                 selector: {
-                    required: "Alignment is required",
+                    required: "Please select the alignment",
                 },
             },
             errorPlacement: function(error, element) {
@@ -13474,16 +13474,16 @@ var validateSectionHomeImage = function() {
             },
             messages: {
                 img_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 content: {
-                    required: "Content is required",
+                    required: "Please enter the content",
                 },
                 selector: {
-                    required: "Alignment is required",
+                    required: "Please select the alignment",
                 },
                 img1: {
-                    required: "Image is required",
+                    required: "Please select the Image",
                 },
             },
             errorPlacement: function(error, element) {
@@ -13570,9 +13570,9 @@ var validateSectionBusiness = function() {
                 }
             },
             messages: {
-                section_title: "Caption is required",
-                section_config: "Please select configurations.",
-                layoutType: "Please select layout.",
+                section_title: "Please enter the caption",
+                section_config: "Please select the configurations",
+                layoutType: "Please select the layout",
                 'delete[]': "Please select at least one record",
             },
             errorPlacement: function(error, element) {
@@ -13660,7 +13660,7 @@ var validateSectionEvents = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -13764,13 +13764,13 @@ var validateSectionBlogs = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -13875,13 +13875,13 @@ var validateSectionService = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -13986,13 +13986,13 @@ var validateSectionCandWService = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14097,13 +14097,13 @@ var validateSectionConsultations = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14193,7 +14193,7 @@ var validateSectionComplaintServices = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
                 'delete[]': "Please select at least one record",
@@ -14297,13 +14297,13 @@ var validateSectionFMBroadcasting = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14407,13 +14407,13 @@ var validateSectionBoardofDirectors = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14516,13 +14516,13 @@ var validateSectionRegisterofApplications = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14625,13 +14625,13 @@ var validateSectionLicenceRegister = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14735,13 +14735,13 @@ var validateSectionFormsandFees = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 section_config: {
-                    required: "Please select configurations.",
+                    required: "Please select the configurations.",
                 },
                 layoutType: {
-                    required: "Please select layout.",
+                    required: "Please select the layout.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -14837,7 +14837,7 @@ var validateSectionPublication = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
                 'delete[]': "Please select at least one record",
@@ -14925,7 +14925,7 @@ var validateSectionNews = function() {
             },
             messages: {
                 section_title: {
-                    required: "Please enter caption.",
+                    required: "Please enter the caption.",
                 },
 
                 'delete[]': "Please select at least one record",
@@ -15012,7 +15012,7 @@ var validateSectionAlerts = function() {
             },
             messages: {
                 section_title: {
-                    required: "Please enter caption.",
+                    required: "Please enter the caption.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -15097,7 +15097,7 @@ var validateSectionLinks = function() {
             },
             messages: {
                 section_title: {
-                    required: "Please enter caption.",
+                    required: "Please enter the caption.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -15182,7 +15182,7 @@ var validateSectionFaqs = function() {
             },
             messages: {
                 section_title: {
-                    required: "Please enter caption.",
+                    required: "Please enter the caption.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -15267,7 +15267,7 @@ var validateSectionDepartment = function() {
             },
             messages: {
                 section_title: {
-                    required: "Please enter caption.",
+                    required: "Please enter the caption.",
                 },
                 'delete[]': "Please select at least one record",
             },
@@ -15354,8 +15354,8 @@ var validateSectionArticles = function() {
                 }
             },
             messages: {
-                section_title: "Caption is required",
-                section_config: "Please select configurations.",
+                section_title: "Please enter the caption",
+                section_config: "Please select the configurations.",
                 'delete[]': "Please select at least one record",
             },
             errorPlacement: function(error, element) {
@@ -15441,8 +15441,8 @@ var validateSectionPromotions = function() {
                 }
             },
             messages: {
-                section_title: "Caption is required",
-                section_config: "Please select configurations.",
+                section_title: "Please enter the caption",
+                section_config: "Please select the configurations.",
                 'delete[]': "Please select at least one record",
             },
             errorPlacement: function(error, element) {
@@ -15521,7 +15521,7 @@ var validateBusinessCustomize = function() {
             },
             messages: {
                 section_title: {
-                    required: "Image field is required"
+                    required: "Please select the Image"
                 }
             },
             errorPlacement: function(error, element) {
@@ -15590,7 +15590,7 @@ var validateEventsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -15668,14 +15668,14 @@ var validateCareerTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -15741,7 +15741,7 @@ var validateSpacerTemplate = function() {
             },
             messages: {
                 section_spacer: {
-                    required: "Spacer Class is required"
+                    required: "Please enter the class"
                 }
             },
             errorPlacement: function(error, element) {
@@ -15897,7 +15897,7 @@ var validateNumberAllocationsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
             },
             errorPlacement: function(error, element) {
@@ -15982,13 +15982,13 @@ var validateServiceTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16061,7 +16061,7 @@ var validateCandWServiceTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -16145,13 +16145,13 @@ var validateConsultationsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16239,13 +16239,13 @@ var validateComplaintServicesTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16330,13 +16330,13 @@ var validateFMBroadcastingTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16421,13 +16421,13 @@ var validateBoardofDirectorsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16497,7 +16497,7 @@ var validateRegisterofApplicationsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
             },
             errorPlacement: function(error, element) {
@@ -16572,10 +16572,10 @@ var validateLicenceRegisterTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 sector: {
-                    required: "Please select sector."
+                    required: "Please select the sector."
                 }
             },
             errorPlacement: function(error, element) {
@@ -16648,7 +16648,7 @@ var validateFormsAndFeesTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
             },
@@ -16724,7 +16724,7 @@ var validatePublicationTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
 
@@ -16800,7 +16800,7 @@ var validateDecisionTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
 
@@ -16880,10 +16880,10 @@ var validateSectionPhotoAlbum = function() {
             },
             messages: {
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 },
             },
             errorPlacement: function(error, element) {
@@ -16960,10 +16960,10 @@ var validateSectionVideoAlbum = function() {
             },
             messages: {
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -17036,7 +17036,7 @@ var validateNewsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
 
@@ -17109,7 +17109,7 @@ var validatePublicRecordTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
 
             },
@@ -17181,7 +17181,7 @@ var validateLatestNewsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17251,7 +17251,7 @@ var validateQuickLinkTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17337,13 +17337,13 @@ var validatePhotoAlbumTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -17429,13 +17429,13 @@ var validateVideoAlbumTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
             },
             errorPlacement: function(error, element) {
@@ -17506,7 +17506,7 @@ var validateOrganizationsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17576,7 +17576,7 @@ var validateInterconnectionsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17647,7 +17647,7 @@ var validateAlertsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17717,7 +17717,7 @@ var validateDepartmentTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17788,7 +17788,7 @@ var validateLinksTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17858,7 +17858,7 @@ var validateFaqsTemplate = function() {
             },
             messages: {
                 section_title: {
-                    required: "Caption is required",
+                    required: "Please enter the caption",
                 }
             },
             errorPlacement: function(error, element) {
@@ -17933,10 +17933,10 @@ var validatePromotionsTemplate = function() {
                     required: "Please enter the title"
                 },
                 layoutType: {
-                    required: "Please select layout."
+                    required: "Please select the layout."
                 },
                 section_config: {
-                    required: "Please select configurations."
+                    required: "Please select the configurations."
                 }
 
             },

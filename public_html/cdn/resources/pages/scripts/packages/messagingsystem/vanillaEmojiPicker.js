@@ -7528,6 +7528,8 @@ const EmojiPicker = function(options) {
                         background-color: white;
                         overflow: hidden;
                         z-index: 9999;
+                        margin-top:-110px;
+                        margin-left:-40px;
                     }
 
                     .fg-emoji-container svg {
@@ -7688,14 +7690,22 @@ const EmojiPicker = function(options) {
 
 
         position: () => {
-
             const e             = window.event;
             const clickPosX     = e.clientX;
             const clickPosY     = e.clientY;
             const obj           = {};
-
             obj.left            = clickPosX;
             obj.top             = clickPosY;
+
+            console.log(obj.left);
+            console.log(obj.top);
+
+      			//obj.left = obj.left - ((obj.left*10)/100);
+						// obj.top = obj.top - ((obj.top*52)/100);
+
+						/*obj.left = obj.left - 42;
+						obj.top = obj.top - 442;*/
+
 
             return obj;
 

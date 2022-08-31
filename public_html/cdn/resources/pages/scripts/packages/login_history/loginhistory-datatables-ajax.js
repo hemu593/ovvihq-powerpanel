@@ -43,15 +43,7 @@ var TableDatatablesAjax = function () {
                 "dom": "t <'gridjs-footer' <'gridjs-pagination'i <'gridjs-pages'p>>>",
                 "deferRender": true,
                 "pageLength": 20, // default record count per page
-                drawCallback:function(){
-                    var $api = this.api();
-                    var pages = $api.page.info().pages;
-                    var rows = $api.data().length;
-                    if(pages<=1){
-                        $('.dataTables_info').css('display','none');
-                        $('.dataTables_paginate').css('display','none');
-                    }
-                },
+                
                 "serverSide": true,
                 "lengthChange": false,
                 "pagingType": "simple_numbers",

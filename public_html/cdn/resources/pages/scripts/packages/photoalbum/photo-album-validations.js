@@ -85,42 +85,36 @@ var Validate = function() {
                 img_id: "required",
             },
             messages: {
-                title: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.title') }),
-                    xssProtection: "Enter valid input.",
-                    no_url: "URL doesn't allowed",
+                title:{
+                    required: "Please enter the title",
                 },
                 order: {
-                    required: Lang.get('validation.required', {
-                        attribute: Lang.get('template.displayorder')
-                    })
+                    required: "Display order must be a number greater than zero (0)"
                 },
                 doc_id: {
-                    required: 'Document field is required.'
+                    required: 'Please select the document'
                 },
-                short_description: { required: "Short Description field is required." },
+                short_description: {
+                    required: "Please enter the short description"
+                },
+                varMetaTitle:{
+                    required: "Please enter the meta title",
+                },
+                varMetaDescription:{
+                    required: "Please enter the meta description",
+                },
                 start_date_time: {
-                    required: "Start date field is required.",
+                    required: "Please select the start date",
                 },
                 end_date_time: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
+                    required: "Please select the end date.",
                     daterange: 'The end date must be a greater than start date.'
-                },
-                varMetaTitle: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }),
-                    xssProtection: "Enter valid input.",
-                    no_url: "URL doesn't allowed",
-                },
-                varMetaDescription: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }),
-                    xssProtection: "Enter valid input.",
-                    no_url: "URL doesn't allowed",
                 },
                 new_password: {
                     required: Lang.get('validation.required', { attribute: 'Password' }),
                     passwordrules: 'Please follow rules for password.'
                 },
-                img_id: Lang.get('validation.required', { attribute: Lang.get('template.image') }),
+                img_id: "Please select featured image",
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -182,7 +176,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     jQuery.validator.addMethod("minStrict", function(value, element) {
         // allow any non-whitespace characters as the host part

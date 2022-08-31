@@ -80,22 +80,20 @@ var Validate = function() {
                 }
             },
             messages: {
-                title: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.title') })
+                title:{
+                    required: "Please enter the title",
                 },
-                category_id: "Please select category.",
-                description: "Description field is required.",
+                sector: { required: "Please select the sector type" },
+                category_id: { required: "Please select category" },
+                description: "Please enter the short description",
                 order: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') })
-                },
-                sector: {
-                    required: "Sector field is required.",
+                    required: "Display order must be a number greater than zero (0)"
                 },
                 start_date_time: {
-                    required: "Start date field is required.",
+                    required: "Please select the start date",
                 },
                 end_date_time: {
-                    required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
+                    required: "Please select the end date.",
                     daterange: 'The end date must be a greater than start date.'
                 },
             },
@@ -165,7 +163,8 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
+
     var isChecked = $('#faq_end_date').attr('data-exp');
     if (isChecked == 1) {
         $('.expdatelabel').removeClass('no_expiry');
@@ -179,34 +178,10 @@ jQuery(document).ready(function() {
     }
 });
 
-// $('.fromButton').click(function() {
-//     $('#faq_start_date').datetimepicker('show');
-// });
-// $('.toButton').click(function() {
-//     $('#faq_end_date').datetimepicker('show');
-// });
+
 $(document).on("change", '#faq_end_date', function() {
     $(this).attr('data-newvalue', $(this).val());
 });
-// jQuery(document).ready(function() {
-//     $('#faq_start_date').datetimepicker({
-//         format: DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT,
-//         onShow: function() {
-//             this.setOptions({})
-//         },
-//         scrollMonth: false,
-//         scrollInput: false
-//     });
-
-//     $('#faq_end_date').datetimepicker({
-//         format: DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT,
-//         onShow: function() {
-//             this.setOptions({})
-//         },
-//         scrollMonth: false,
-//         scrollInput: false
-//     });
-// });
 
 jQuery.validator.addMethod("daterange", function(value, element) {
     var fromDateTime = $('#faq_start_date').val();
@@ -223,14 +198,8 @@ jQuery.validator.addMethod("daterange", function(value, element) {
 
 jQuery.validator.addMethod("phoneFormat", function(value, element) {
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter a valid phone number.');
-jQuery.validator.addMethod("noSpace", function(value, element) {
-    if (value.trim().length <= 0) {
-        return false;
-    } else {
-        return true;
-    }
-}, "This field is required");
+}, 'Please enter phone number in valid format');
+
 jQuery.validator.addMethod("minStrict", function(value, element) {
     if (value > 0) {
         return true;
@@ -246,7 +215,7 @@ jQuery.validator.addMethod("avoidonlyzero", function(value, element) {
     } else {
         return true;
     }
-}, "Please enter a valid value.");
+}, "Please enter a valid input");
 
 $('input[type=text]').change(function() {
     var input = $(this).val();

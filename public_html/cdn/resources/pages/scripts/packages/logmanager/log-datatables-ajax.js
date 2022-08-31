@@ -43,15 +43,7 @@ var TableDatatablesAjax = function () {
                 //     [10, 20, 50, 100] // change per page values here
                 // ],
                 "pageLength": 20, // default record count per page
-                drawCallback:function(){
-                    var $api = this.api();
-                    var pages = $api.page.info().pages;
-                    var rows = $api.data().length;
-                    if(pages<=1){
-                        $('.dataTables_info').css('display','none');
-                        $('.dataTables_paginate').css('display','none');
-                    }
-                },
+                
                 // Code for sorting
                 "serverSide": true,
                 "lengthChange": false,

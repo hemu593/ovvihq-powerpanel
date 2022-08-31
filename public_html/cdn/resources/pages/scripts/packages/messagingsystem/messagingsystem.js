@@ -246,12 +246,12 @@ $(document).ready(function () {
         var docid = $("#publications").val();
         var imageId = $("#publications_image").val();
         if (comment == '' && docid == '' && imageId == '') {
-            $(".errorclass").show();
+            $(".errorclass").removeClass('d-none');
             $("form#MsgSystem div").addClass("has-error");
             $(".errorclass").html("Please type message or select any document before you click on reply.");
             return false;
         }
-        $(".errorclass").hide();
+        $(".errorclass").addClass('d-none');
         $("form#MsgSystem div:first").removeClass("has-error");
         var ajaxurl = window.site_url + '/powerpanel/messagingsystem/insermessagedata';
         $('.message_loader').show();
@@ -285,12 +285,12 @@ $(document).ready(function () {
         var docid = $("#publications").val();
         var imageId = $("#publications_image").val();
         if (comment == '' && docid == '' && imageId == '') {
-            $(".errorclass").show();
+            $(".errorclass").removeClass('d-none');
             $("form#MsgSystem div").addClass("has-error");
             $(".errorclass").html("Please type message or select any document before you click on reply.");
             return false;
         }
-        $(".errorclass").hide();
+        $(".errorclass").addClass('d-none');
         $("form#MsgSystem div:first").removeClass("has-error");
         var toid = $("#toid").val();
         var ajaxurl = window.site_url + '/powerpanel/messagingsystem/insermessagedata';
@@ -360,7 +360,7 @@ $(document).ready(function () {
                 success: function (data) {
                     getmessage(userid);
                     $("#replayform").show();
-                    // $(".mcscroll2").mCustomScrollbar({
+                    // $(".simplebar-offset").mCustomScrollbar({
                     //     axis: "y",
                     //     scrollbarPosition: "outside",
                     //     theme: "minimal-dark"
@@ -432,11 +432,11 @@ function refreshauto() {
 }
 $('#varShortDescription').keyup(function (e) {
     if ($(this).val() == '' && $("#publications").val() == '' && $("#publications_image").val() == '') {
-        $(".errorclass").show();
+        $(".errorclass").removeClass('d-none');
         $("form#MsgSystem div").addClass("has-error");
         $(".errorclass").html("Please type message or select any document before you click on reply.");
     } else {
-        $(".errorclass").hide();
+        $(".errorclass").addClass('d-none');
         $("form#MsgSystem div:first").removeClass("has-error");
     }
 });

@@ -77,21 +77,29 @@ var Validate = function () {
                 },
             },
             messages: {
-                title:{required: Lang.get('validation.required', {attribute: Lang.get('template.name')})},
-                order: {required: Lang.get('validation.required', {attribute: Lang.get('template.displayorder')})},
-                varMetaTitle:{required: Lang.get('validation.required', {attribute: Lang.get('template.metatitle')})},
-                varMetaDescription:{required: Lang.get('validation.required', {attribute: Lang.get('template.metadescription')})},
+                title:{
+                    required: "Please enter the title",
+                },
+                order: {
+                    required: "Display order must be a number greater than zero (0)"
+                },
                 start_date_time: {
-                    required: "Start date field is required.",
+                    required: "Please select the start date",
                 },
                 end_date_time: {
-                    required: Lang.get('validation.required', {attribute: Lang.get('template.enddate')}),
+                    required: "Please select the end date",
                     daterange: 'The end date must be a greater than start date.'
                 },
                 new_password: {
                     required: Lang.get('validation.required', {attribute: 'Password'}),
-                    passwordrules: 'Please follow rules for password.'
-                }
+                    passwordrules: 'Please follow rules for password'
+                },
+                varMetaTitle:{
+                    required: "Please enter the meta title",
+                },
+                varMetaDescription:{
+                    required: "Please enter the meta description",
+                },
             },
             errorPlacement: function (error, element) {
                 if (element.parent('.input-group').length) {
@@ -104,7 +112,7 @@ var Validate = function () {
                     error.insertAfter(element);
                 }
             },
-            invalidHandler: function (event, validator) { //display error alert on form submit  
+            invalidHandler: function (event, validator) { //display error alert on form submit
                 var errors = validator.numberOfInvalids();
                 if (errors) {
                     $.loader.close(true);
@@ -157,7 +165,7 @@ jQuery(document).ready(function () {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {
@@ -172,17 +180,18 @@ jQuery(document).ready(function () {
     }
 
 });
+
 jQuery.validator.addMethod("phoneFormat", function (value, element) {
-    // allow any non-whitespace characters as the host part
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter a valid phone number.');
+}, 'Please enter phone number in valid format');
+
 jQuery.validator.addMethod("minStrict", function (value, element) {
     if (value > 0) {
         return true;
     } else {
         return false;
     }
-}, 'Display order must be a number higher than zero');
+}, 'Display order must be a number greater than zero (0)');
 
 jQuery.validator.addMethod("daterange", function (value, element) {
     var fromDateTime = $('#start_date_time').val();
@@ -195,7 +204,7 @@ jQuery.validator.addMethod("daterange", function (value, element) {
     } else {
         return true;
     }
-}, "The end date must be a greater than start date.");
+}, "The end date must be a greater than start date");
 
 $('input[type=text]').change(function () {
     var input = $(this).val();

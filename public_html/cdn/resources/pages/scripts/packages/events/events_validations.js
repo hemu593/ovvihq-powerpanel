@@ -81,33 +81,28 @@ var Validate = function() {
                 }
             },
             messages: {
-                title: {
-                    required: Lang.get('validation.required', {
-                        attribute: Lang.get('template.title')
-                    })
+                title:{
+                    required: "Please enter the title",
                 },
-                category_id: "Please select category",
-                sector: "Please select Sector Type",
-                short_description: { required: "Please enter short description" },
-                varMetaTitle: {
-                    required: Lang.get('validation.required', {
-                        attribute: Lang.get('template.metatitle')
-                    })
+                sector: { required: "Please select the sector type" },
+                category_id: { required: "Please select category" },
+                short_description: {
+                    required: "Please enter the short description"
                 },
                 varAdminEmail: {
-                  required:"Event Admin Email field is required"  
+                    required:"Please enter the event Admin Email"
                 },
                 varAdminPhone: {
                     minlength: "Phone number should be minimum 10 digits",
                     maxlength: "Phone number should be more 15 digits",
                     number: "Phone no should only consist numbers"
                 },
-                varMetaDescription: {
-                    required: Lang.get('validation.required', {
-                        attribute: Lang.get('template.metadescription')
-                    })
+                varMetaTitle:{
+                    required: "Please enter the meta title",
+                },
+                varMetaDescription:{
+                    required: "Please enter the meta description",
                 }
-                // img_id: Lang.get('validation.required', { attribute: Lang.get('template.image') }),
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -180,8 +175,8 @@ jQuery(document).ready(function() {
         noSpace: true,
         required: true,
         messages: {
-			    required: "Event Admin Email field is required"
-			  } 
+			    required: "Please enter the admin email"
+			  }
     });
     $("#varAdminPhone").rules('add', {
         number: true,
@@ -195,7 +190,7 @@ jQuery(document).ready(function() {
             noCalendar: true,
             dateFormat: "h:i K",
         });;
-    
+
     $("input[id^='timeSlotTo']").flatpickr({
         enableTime: true,
         noCalendar: true,
@@ -212,7 +207,7 @@ jQuery(document).ready(function() {
         //     scrollMonth: false,
         //     scrollInput: false
         // }).on("change", function (e) {
-        //     let index = e.target.getAttribute("data-dateIndex");    
+        //     let index = e.target.getAttribute("data-dateIndex");
         //     var minDate = new Date(e.target.value);
         //     $('#dateTimeSlot' + key + ' #end_date_time' + key).datepicker('setStartDate', minDate);
         // });
@@ -238,7 +233,7 @@ jQuery(document).ready(function() {
             dateFormat: DEFAULT_DATE_FORMAT,
             minDate: 'today'
         });
-        
+
         $('#dateTimeSlot' + key + ' #start_date_time'+key).on('change', function (e) {
             let index = e.target.getAttribute("data-dateIndex");
             let date = new Date(e.target.value)
@@ -256,30 +251,30 @@ jQuery(document).ready(function() {
                 maxDate: date
             });
         });
-        $('#dateTimeSlot' + key + ' #start_date_time'+key).rules('add', { 
+        $('#dateTimeSlot' + key + ' #start_date_time'+key).rules('add', {
         	required: true,
         	messages: {
-				    required: "Start date field is required",
-				  } 
+				    required: "Please select the Start date",
+				  }
         });
-        $('#dateTimeSlot'+ key +' #end_date_time'+key).rules('add', { 
+        $('#dateTimeSlot'+ key +' #end_date_time'+key).rules('add', {
         	required: true,
         	messages: {
-				    required: "End date field is required",
-				  }  
+				    required: "Please select the end date",
+				  }
         });
         $('.time-slots-'+key).each(function(tkey) {
-            $("#dateTimeSlot" + key + " #timeSlotFrom"+tkey).rules('add', { 
+            $("#dateTimeSlot" + key + " #timeSlotFrom"+tkey).rules('add', {
             	required: true,
             	messages: {
-						    required: "From field is required",
-						  } 
+						    required: "Please enter the time start from",
+						  }
             });
             $("#dateTimeSlot" + key + " #timeSlotTo"+tkey).rules('add', {
                 required: true,
                 TimeValid:[key, tkey],
                 messages: {
-							    required: "To field is required",
+							    required: "Please enter the time end to",
 							  }
             });
             $("#dateTimeSlot" + key + " #attendees"+tkey).rules('add', {
@@ -289,7 +284,7 @@ jQuery(document).ready(function() {
                 noSpace: true,
                 zero_not_allow: true,
                 messages: {
-							    required: "No of Attendees field is required",
+							    required: "Please enter the no of attendees",
 							  }
             });
         });
@@ -305,20 +300,20 @@ jQuery(document).ready(function() {
                 return true;
             }else{
                 return false;
-            }   
+            }
         }else{
             return true;
         }
     }, "End time must be greater than the start time.");
 
-    
+
     jQuery.validator.addMethod("noSpace", function(value, element) {
         if (value.trim().length <= 0) {
             return false;
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     jQuery.validator.addMethod("daterange", function (element) {
         console.log('dateRange Element', element)
@@ -339,13 +334,7 @@ jQuery(document).ready(function() {
         return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
     }, 'Please enter a valid phone number.');
 
-    jQuery.validator.addMethod("noSpace", function(value, element) {
-        if (value.trim().length <= 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }, "This field is required");
+
     jQuery.validator.addMethod("minStrict", function(value, element) {
         if (value > 0) {
             return true;
@@ -361,7 +350,7 @@ jQuery(document).ready(function() {
             return false;
         }
     }, "Please enter a valid value");
-    
+
     $('input[type=text]').change(function() {
         var input = $(this).val();
         var trim_input = input.trim();
@@ -466,29 +455,29 @@ function addDateTimeSlot(event, id) {
         });
 
         $("#dateTimeSlotAdd" + parseInt(id)).remove();
-        $('#dateTimeSlot' + nextId + ' #start_date_time' + nextId).rules('add', { 
+        $('#dateTimeSlot' + nextId + ' #start_date_time' + nextId).rules('add', {
         	required: true,
         	messages: {
-				    required: "Start date field is required",
-				  } 
+				    required: "Please select the Start date",
+				  }
         });
-        $('#dateTimeSlot' + nextId + ' #end_date_time' + nextId).rules('add', { 
+        $('#dateTimeSlot' + nextId + ' #end_date_time' + nextId).rules('add', {
         	required: true,
         	messages: {
-				    required: "End date field is required",
-				  } 
+				    required: "Please select the end date",
+				  }
         });
-        $('#dateTimeSlot' + nextId + ' #timeSlotFrom0').rules('add', { 
+        $('#dateTimeSlot' + nextId + ' #timeSlotFrom0').rules('add', {
         	required: true,
         	messages: {
-				    required: "From field is required",
-				  } 
+				    required: "Please enter the time start from",
+				  }
         });
         $('#dateTimeSlot' + nextId + ' #timeSlotTo0').rules('add', {
             required: true,
             TimeValid: [nextId, 0],
             messages: {
-					    required: "To field is required",
+					    required: "Please enter the time end to",
 					  }
         });
         $('#dateTimeSlot' + nextId + ' #attendees0').rules('add', {
@@ -498,7 +487,7 @@ function addDateTimeSlot(event, id) {
             noSpace: true,
             zero_not_allow: true,
             messages: {
-					    required: "No of Attendees field is required",
+					    required: "Please enter the no of attendees",
 					  }
         });
     }

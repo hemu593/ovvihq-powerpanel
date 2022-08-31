@@ -84,21 +84,31 @@ var Validate = function() {
                 }
             },
             messages: {
-                title: { "Please enter the title." },
-                sector: { required: "Please select sector type." },
-                category_id: { required: "Please select category." },
-                short_description: { required: Lang.get('validation.required', { attribute: Lang.get('template.shortdescription') }) },
-                display_order: { required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') }) },
-                varMetaTitle: { required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }) },
-                varMetaDescription: { required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }) },
+                title:{
+                    required: "Please enter the title",
+                },
+                sector: { required: "Please select the sector type" },
+                display_order: {
+                    required: "Display order must be a number greater than zero (0)"
+                },
+                category_id: { required: "Please select category" },
+                short_description: {
+                    required: "Please enter the short description"
+                },
+                varMetaTitle:{
+                    required: "Please enter the meta title",
+                },
+                varMetaDescription:{
+                    required: "Please enter the meta description",
+                },
                 varExternalLink: {
-                    url: "Please enter a valid URL.",
+                    url: "Please enter a valid URL",
                 },
                 start_date_time: {
-                    required: "Please enter the start date.",
+                    required: "Please select the start date",
                 },
                 end_date_time: {
-                    required: "Please enter the end date.",
+                    required: "Please select the end date.",
                     daterange: 'The end date must be a greater than start date.'
                 },
                 new_password: {
@@ -172,7 +182,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     // $('#news_start_date').datetimepicker({
     //     format: DEFAULT_DATE_FORMAT,
@@ -207,10 +217,11 @@ jQuery(document).ready(function() {
     }
 
 });
+
 jQuery.validator.addMethod("phoneFormat", function(value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter a valid phone number.');
+}, 'Please enter phone number in valid format');
 
 jQuery.validator.addMethod("daterange", function(value, element) {
     var fromDateTime = $('#news_start_date').val();

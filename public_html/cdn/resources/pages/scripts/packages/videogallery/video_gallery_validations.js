@@ -46,20 +46,24 @@ var Validate = function () {
                 img_id: "required",
             },
             messages: {
-                title:{required: Lang.get('validation.required', {attribute: Lang.get('template.title')})},
-                order: {required: Lang.get('validation.required', {attribute: Lang.get('template.displayorder')})},
+                title:{
+                    required: "Please enter the title",
+                },
+                order: {
+                    required: "Display order must be a number greater than zero (0)"
+                },
                 start_date_time: {
-                    required: "Start date field is required.",
+                    required: "Please select the start date",
                 },
                 end_date_time: {
-                    required: Lang.get('validation.required', {attribute: Lang.get('template.enddate')}),
+                    required: "Please select the end date.",
                     daterange: 'The end date must be a greater than start date.'
                 },
                 link: {
-                    required: "Link is required.",
+                    required: "Please enter the link",
                     urlvalidate: "Please enter Vimeo or Youtube link.",
                 },
-                img_id: Lang.get('validation.required', {attribute: Lang.get('template.image')}),
+                img_id: "Please select featured image",
             },
             errorPlacement: function (error, element) {
                 if (element.parent('.input-group').length) {
@@ -113,7 +117,7 @@ jQuery(document).ready(function () {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {
@@ -131,13 +135,7 @@ jQuery(document).ready(function () {
 jQuery.validator.addMethod("phoneFormat", function (value, element) {
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
 }, 'Please enter a valid phone number.');
-jQuery.validator.addMethod("noSpace", function (value, element) {
-    if (value.trim().length <= 0) {
-        return false;
-    } else {
-        return true;
-    }
-}, "This field is required");
+
 jQuery.validator.addMethod("minStrict", function (value, element) {
     if (value > 0) {
         return true;
@@ -145,6 +143,7 @@ jQuery.validator.addMethod("minStrict", function (value, element) {
         return false;
     }
 }, 'Display order must be a number higher than zero');
+
 $('input[type=text]').change(function () {
     var input = $(this).val();
     var trim_input = input.trim();

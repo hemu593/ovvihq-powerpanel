@@ -7,227 +7,38 @@ $(window).on('load', function() {
 
 $(window).on('load', function() {
     $('#wrapper').css('opacity', '1');
-    var owlClass = '.home-banner';
-    $(owlClass + ' .owl-carousel').owlCarousel({
-        loop: false,
-        rewind: true,
-        margin: 0,
-        /* Show next/prev buttons & dots S */
-        nav: false,
-        //navText: [owlNavTextPrev,owlNavTextNext],
-        dots: false,
-        dotsEach: false,
-        /* Show next/prev buttons & dots E*/
-        /* Autoplay S */
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        smartSpeed: 250,
-        /* Autoplay E */
-        /* Auto Height S */
-        autoHeight: false,
-        /* Auto Height E */
-        /* Lazy Load S */
-        lazyLoad: true,
-        lazyLoadEager: 1,
-        /* Lazy Load E */
-        /* Responsive S */
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-                /* loop:($(owlClass + " .owl-carousel .item").length <= 1 ? false : true) */
-            },
-            480: {
-                items: 1,
-                /* loop:($(owlClass + " .owl-carousel .item").length <= 1 ? false : true) */
-            },
-            992: {
-                items: 1,
-                /* loop:($(owlClass + " .owl-carousel .item").length <= 1 ? false : true) */
-            },
-            1441: {
-                items: 1,
-                /* loop:($(owlClass + " .owl-carousel .item").length <= 1 ? false : true) */
-            }
-        },
-        /* Responsive E */
-        /* Mouse & Touch drag enabled / disabled S */
-        mouseDrag: true,
-        touchDrag: true,
-        /* Mouse & Touch drag enabled / disabled E */
-        /* Padding left and right on stage S */
-        stagePadding: 0,
-        /* Padding left and right on stage E */
-    });
+    
 });
-/* SYNC OwlCarousel2 S */
-$(document).ready(function() {
-    var sync1 = $("#sync1");
-    var sync2 = $("#sync2");
-    var slidesPerPage = 4;
-    var syncedSecondary = true;
 
-    sync1.owlCarousel({
-        items: 1,
-        slideSpeed: 2000,
-        nav: false,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        margin: 5,
-        responsiveRefreshRate: 200,
-    }).on('changed.owl.carousel', syncPosition);
-
-    sync2.on('initialized.owl.carousel', function() {
-            sync2.find(".owl-item").eq(0).addClass("current");
-        })
-        .owlCarousel({
-            items: slidesPerPage,
-            dots: false,
-            nav: false,
-            smartSpeed: 200,
-            slideSpeed: 500,
-            slideBy: slidesPerPage,
-            responsiveRefreshRate: 100
-        }).on('changed.owl.carousel', syncPosition2);
-
-    function syncPosition(el) {
-        var count = el.item.count - 1;
-        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
-
-        if (current < 0) {
-            current = count;
-        }
-        if (current > count) {
-            current = 0;
-        }
-
-        sync2
-            .find(".owl-item")
-            .removeClass("current")
-            .eq(current)
-            .addClass("current");
-        var onscreen = sync2.find('.owl-item.active').length - 1;
-        var start = sync2.find('.owl-item.active').first().index();
-        var end = sync2.find('.owl-item.active').last().index();
-
-        if (current > end) {
-            sync2.data('owl.carousel').to(current, 100, true);
-        }
-        if (current < start) {
-            sync2.data('owl.carousel').to(current - onscreen, 100, true);
-        }
+/* Browser Upgrade Font API S */
+    var ie = /MSIE (\d+)/.exec(navigator.userAgent);
+    ie = ie? ie[1] : null;
+    if(ie && ie <= 9) {
+        var script = document.createElement( 'script' );script.type = 'text/javascript';
+        script.src = 'assets/js/html5.min.js';$("head").append("<style type='text/css'>.buorg{display:block}</style>");
     }
-
-    function syncPosition2(el) {
-        if (syncedSecondary) {
-            var number = el.item.index;
-            sync1.data('owl.carousel').to(number, 100, true);
-        }
+    if(ie && ie == 8) {  
+        $('head').append("<style type='text/css'>.buorg{display:block}</style>");
     }
+    else if(ie && ie == 7) {
+        $('head').append("<style type='text/css'>.buorg{display:block;}</style>");
+    }
+/* Browser Upgrade Font API E */
 
-    sync2.on("click", ".owl-item", function(e) {
-        e.preventDefault();
-        var number = $(this).index();
-        sync1.data('owl.carousel').to(number, 300, true);
-    });
+/* Back to Top Scroll S */
+$(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#back-top').fadeIn();
+    } else {
+        $('#back-top').fadeOut();
+        $('body').removeClass("back-top-scroll")
+    }
 });
-/* SYNC OwlCarousel2 E */
-/* SYNC2 OwlCarousel2 S */
-$(document).ready(function() {
-    var sync3 = $("#sync3");
-    var sync4 = $("#sync4");
-    var slidesPerPage = 4;
-    var syncedSecondary = true;
-
-    sync3.owlCarousel({
-        items: 1,
-        slideSpeed: 2000,
-        nav: false,
-        autoplay: true,
-        dots: false,
-        loop: true,
-        margin: 5,
-        responsiveRefreshRate: 200,
-    }).on('changed.owl.carousel', syncPosition);
-
-    sync4.on('initialized.owl.carousel', function() {
-            sync4.find(".owl-item").eq(0).addClass("current");
-        })
-        .owlCarousel({
-            items: slidesPerPage,
-            dots: false,
-            nav: false,
-            smartSpeed: 200,
-            slideSpeed: 500,
-            slideBy: slidesPerPage,
-            responsiveRefreshRate: 100
-        }).on('changed.owl.carousel', syncPosition2);
-
-    function syncPosition(el) {
-        var count = el.item.count - 1;
-        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
-
-        if (current < 0) {
-            current = count;
-        }
-        if (current > count) {
-            current = 0;
-        }
-
-        sync4
-            .find(".owl-item")
-            .removeClass("current")
-            .eq(current)
-            .addClass("current");
-        var onscreen = sync4.find('.owl-item.active').length - 1;
-        var start = sync4.find('.owl-item.active').first().index();
-        var end = sync4.find('.owl-item.active').last().index();
-
-        if (current > end) {
-            sync4.data('owl.carousel').to(current, 100, true);
-        }
-        if (current < start) {
-            sync4.data('owl.carousel').to(current - onscreen, 100, true);
-        }
-    }
-
-    function syncPosition2(el) {
-        if (syncedSecondary) {
-            var number = el.item.index;
-            sync3.data('owl.carousel').to(number, 100, true);
-        }
-    }
-
-    sync4.on("click", ".owl-item", function(e) {
-        e.preventDefault();
-        var number = $(this).index();
-        sync3.data('owl.carousel').to(number, 300, true);
-    });
+$("#back-top").click(function () {
+    $('body').addClass("back-top-scroll")
+    $("html, body").animate({scrollTop: 0}, 1000);
 });
-/* SYNC OwlCarousel2 E */
-/* AOS Animations S */
-function aosFunction() {
-    AOS.init({
-        disable: 'mobile',
-        startEvent: 'DOMContentLoaded',
-        initClassName: 'aos-init',
-        animatedClassName: 'aos-animate',
-        useClassNames: false,
-        disableMutationObserver: false,
-        debounceDelay: 50,
-        throttleDelay: 99,
-        offset: 120,
-        delay: 100,
-        duration: 1000,
-        easing: 'ease-in-out-quad',
-        once: true,
-        mirror: false,
-        anchorPlacement: 'top-bottom',
-    });
-}
-/* AOS Animations E */
+/* Back to Top Scroll E */
 
 /* Common Js Function S */
 /*jQuery.browser S*/
@@ -243,41 +54,6 @@ $(document).ready(function() {
 });
 /* Table div Wrap E */
 /* Common Js Function E */
-
-/* mCustom Scrollbar S */
-(function($) {
-    $(window).on("load", function() {
-        $(".mCcontent").mCustomScrollbar({
-            autoHideScrollbar: true,
-        });
-    });
-})(jQuery);
-
-(function($) {
-    $(window).on("load", function() {
-        $(".mCcontentx").mCustomScrollbar({
-            axis: "x",
-            autoHideScrollbar: true,
-        });
-    });
-})(jQuery);
-/* mCustom Scrollbar E */
-
-/* CMS Convert plain text email to clickable link S */
-/* $(".cms").filter(function(){
-    var html = $(this).html();
-    var emailPattern = /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/g;  
-    var matched_str = $(this).html().match(emailPattern);
-    if(matched_str){
-        var text = $(this).html();
-        $.each(matched_str, function(index, value){
-            text = text.replace(value,"<a href='mailto:"+value+"' title="+value+" target='_blank'>"+value+"</a>");
-        });
-        $(this).html(text);
-        return $(this)
-    }
-}) */
-/* CMS Convert plain text email to clickable link E */
 
 
 /* Thumbnail Container Thumb Generator S */
@@ -361,7 +137,6 @@ $(document).ready(function() {
 
 
 function insertPageHits() {
-
     if (segments.length > 0) {
         segments = JSON.parse(segments.replace(/&quot;/g, '"'));
     }
@@ -419,4 +194,4 @@ $(document).ready(function() {
         AOS.refresh();
     });
 });
-/* AOS End */
+/* AOS End */  

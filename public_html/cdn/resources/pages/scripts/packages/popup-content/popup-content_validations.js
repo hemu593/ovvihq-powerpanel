@@ -131,19 +131,20 @@ var Validate = (function() {
                 },
             },
             messages: {
-                title: Lang.get("validation.required", {
-                    attribute: Lang.get("template.title"),
-                }),
-                img_id: { required: 'Select Image field is required.' },
-                start_date_time: Lang.get("validation.required", {
-                    attribute: Lang.get("template.managePopup.startDateTime"),
-                }),
-                end_date_time: Lang.get("validation.required", {
-                    attribute: Lang.get("template.managePopup.endDateTime"),
-                }),
-                modules: Lang.get("validation.required", {
-                    attribute: Lang.get("template.module"),
-                }),
+                title:{
+                    required: "Please enter the title",
+                },
+                img_id: "Please select featured image",
+                start_date_time: {
+                    required: "Please select the start date",
+                },
+                end_date_time: {
+                    required: "Please select the end date.",
+                    daterange: 'The end date must be a greater than start date.'
+                },
+                modules: {
+                    required: "Please select the module",
+                },
                 foritem: Lang.get("validation.required", {
                     attribute: Lang.get("template.page"),
                 }),
@@ -204,20 +205,13 @@ jQuery(document).ready(function() {
     $(document).on("click", ".versionradio", function(e) {
         Custom.checkVersion();
     });
-    jQuery.validator.addMethod(
-        "noSpace",
-        function(value, element) {
-            if (!$(element).hasClass("select2")) {
-                value = value.trim();
-            }
-            if (value.length <= 0) {
-                return false;
-            } else {
-                return true;
-            }
-        },
-        "This field is required"
-    );
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+        if (value.trim().length <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }, "Please enter the valid input, Space not allowed");
     var isChecked = $("#popup_end_date").attr("data-exp");
     if (isChecked == 1) {
         $(".expdatelabel").removeClass("no_expiry");

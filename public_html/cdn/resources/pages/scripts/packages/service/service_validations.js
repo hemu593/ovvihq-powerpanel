@@ -10,7 +10,7 @@ var Custom = function() {
         init: function() {
             //initialize here something.
         },
-        
+
         getModuleRecords: function(sectorName) {
             var ajaxUrl = site_url + '/powerpanel/service/getCategory';
             jQuery.ajax({
@@ -109,24 +109,20 @@ var Validate = function() {
                 },
             },
             messages: {
-                title: { 
-                    // required: Lang.get('validation.required', { attribute: Lang.get('template.name') }) 
-                    required: "Service name is required.",
+                title:{
+                    required: "Please enter the title",
                 },
-
-                display_order: { required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') }) },
-
+                sector: { required: "Please select the sector type" },
+                display_order: {
+                    required: "Display order must be a number greater than zero (0)"
+                },
                 notelink: {
                     url: "Please enter a valid URL.",
                 },
-                sector: {
-                    required: "Please select sector type.",
-                },
                 service_code: {
-                    required: 'Service Code field is required.'
+                    required: 'Please enter the service code'
                 },
-
-                category_id: "Please select category.",
+                category_id: "Please select category",
             },
             errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
@@ -139,7 +135,7 @@ var Validate = function() {
                     error.insertAfter(element);
                 }
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit  
+            invalidHandler: function(event, validator) { //display error alert on form submit
                 var errors = validator.numberOfInvalids();
                 if (errors) {
                     $.loader.close(true);
@@ -186,7 +182,7 @@ var Validate = function() {
 jQuery(document).ready(function() {
     Validate.init();
     Custom.init();
-    
+
      $('#varSector').on("change", function(e) {
         Custom.getModuleRecords($("#varSector option:selected").val());
         Custom.getRegisterOfApplicationRecords($("#varSector option:selected").val());
@@ -197,7 +193,6 @@ jQuery(document).ready(function() {
        Custom.getLicenceRegisterRecords(null);
         if (selectedCategory > 0) {
             $('#varSector').trigger('change');
-           
         }
         else if(selectedRegisterRecord > 0){
             $('#varSector').trigger('change');
@@ -206,14 +201,14 @@ jQuery(document).ready(function() {
             $('#varSector').trigger('change');
         }
     });
-    
+
     jQuery.validator.addMethod("noSpace", function(value, element) {
         if (value.trim().length <= 0) {
             return false;
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {

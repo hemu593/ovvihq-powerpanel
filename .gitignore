@@ -2,6 +2,7 @@
 /storage/
 /vendor/
 /public_html/cdn/report_img/
+/public_html/cdn/caches/*
 package-lock.json
 .history
 .DS_Store

@@ -23,14 +23,17 @@ function KeycheckOnlyPhonenumber(e) {
     }
     return true
 }
+
 $.validator.addMethod("emailFormat", function (value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$/.test(value);
-}, 'Enter valid email format');
+}, 'Please enter the email address in a valid format');
+
 $.validator.addMethod("xssProtection", function (value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /<(\w+)((?:\s+\w+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/.test(value) == false ? true : false;
-}, 'Enter valid input');
+}, 'Please enter the input in a valid format');
+
 $.validator.addMethod("check_special_char", function (value, element) {
     if (value != '') {
         if (value.match(/^[\x20-\x7E\n]+$/)) {
@@ -41,7 +44,8 @@ $.validator.addMethod("check_special_char", function (value, element) {
     } else {
         return true;
     }
-}, 'Please enter valid input');
+}, 'Please enter the input in a valid format');
+
 $.validator.addMethod('no_url', function (value, element) {
     var re = /^[a-zA-Z0-9\-\.\:\\]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/;
     var re1 = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
@@ -52,12 +56,12 @@ $.validator.addMethod('no_url', function (value, element) {
     if (trimmed.match(re) == null && re1.test(trimmed) == false) {
         return true;
     }
-}, "URL doesn't allowed");
+}, "Please enter the input in a valid format, URL does not allowed");
 
 $.validator.addMethod('validUrl', function (value, element) {
     var url = $.validator.methods.url.bind(this);
     return url(value, element) || url('http://' + value, element);
-}, 'Please enter a valid URL');
+}, 'Please enter the url in a valid format');
 
 $.validator.addMethod("phonenumber", function (value, element) {
     var numberPattern = /\d+/g;
@@ -67,27 +71,29 @@ $.validator.addMethod("phonenumber", function (value, element) {
     } else {
         return true;
     }
-}, 'Please enter a valid phone number.');
+}, 'Please enter the phone number in a valid format');
+
 $.validator.addMethod("noSpace", function (value, element) {
     if (value.trim().length <= 0) {
         return false;
     } else {
         return true;
     }
-}, "No space please don't leave it empty");
+}, "Please enter the valid input");
 
 $.validator.addMethod("alphanumeric", function (value, element) {
     return this.optional(element) || /^[\w.]+$/i.test(value);
-}, "Letters, numbers, and underscores only please");
+}, "Please enter letters and numbers only");
 
 $.validator.addMethod("lettersonly", function (value, element) {
     return this.optional(element) || /^[a-z]+$/i.test(value);
-}, "Letters only please");
+}, "Please enter the valid input");
 
 $("#varPhoneNo").bind("paste", function (e) {
     // access the clipboard using the api
     return false;
 });
+
 var blacklist = /\b(nude|naked|sex|porn|porno|sperm|penis|pussy|vegina|boobs|asshole|bitch|dick)\b/;
 jQuery.validator.addMethod("badwordcheck", function (value) {
     return !blacklist.test(value.toLowerCase());
@@ -108,11 +114,11 @@ $.validator.addMethod("languageTest", function (value) {
 $.validator.addMethod("emailFormat", function (value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$/.test(value);
-}, 'Enter valid email format.');
+}, 'Please enter the email address in a valid format');
 
 $.validator.addMethod("phonenumber_mobile", function (value, element) {
     return (value.match(/^[0-9-_ +()]+$/i));
-}, 'Please enter valid phone number.');
+}, 'Please enter the phone number in a valid format');
 
 $.validator.addMethod("phonenumber", function (value, element) {
     var numberPattern = /\d+/g;
@@ -122,14 +128,14 @@ $.validator.addMethod("phonenumber", function (value, element) {
     } else {
         return true;
     }
-}, 'Please enter a valid phone number.');
-function SetBackGround()
-{
+}, 'Please enter the phone number in a valid format');
+
+function SetBackGround(){
     $("body").addClass("blur_loader");
     document.getElementById('loader_div').style.display = 'block';
 }
-function UnSetBackGround()
-{
+
+function UnSetBackGround(){
     document.getElementById('loader_div').style.display = 'none';
     $("body").removeClass("blur_loader");
 }

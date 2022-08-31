@@ -19,35 +19,6 @@ var Validate = function() {
                 sector: {
                     required: true,
                 },
-                // start_date_time: {
-                //     required: true,
-                // },
-                // end_date_time: {
-                //     daterange: true,
-                //     required: {
-                //         depends: function() {
-                //             var isChecked = $('#end_date_time').attr('data-exp');
-                //             if (isChecked == 0) {
-                //                 return $('input[name=end_date_time]').val().length == 0;
-                //             }
-                //         }
-                //     }
-                // },
-                // varMetaTitle: {
-                //     required: true,
-                //     noSpace: true,
-                //     xssProtection: true,
-                //     no_url: true
-                // },
-                // varMetaDescription: {
-                //     required: true,
-                //     noSpace: true,
-                //     xssProtection: true,
-                //     no_url: true
-                // },
-                // 'new-alias': {
-                //     specialCharacterCheck: true,
-                // },
                 new_password: {
                     required: {
                         depends: function() {
@@ -80,20 +51,13 @@ var Validate = function() {
                 },
             },
             messages: {
-                title: { required: Lang.get('validation.required', { attribute: Lang.get('template.name') }) },
-                order: { required: Lang.get('validation.required', { attribute: Lang.get('template.displayorder') }) },
-                // varMetaTitle: { required: Lang.get('validation.required', { attribute: Lang.get('template.metatitle') }) },
-                // varMetaDescription: { required: Lang.get('validation.required', { attribute: Lang.get('template.metadescription') }) },
-                // start_date_time: {
-                //     required: "Start date field is required.",
-                // },
-                sector: {
-                    required: "Sector field is required.",
+                title:{
+                    required: "Please enter the title",
                 },
-                // end_date_time: {
-                //     required: Lang.get('validation.required', { attribute: Lang.get('template.enddate') }),
-                //     daterange: 'The end date must be a greater than start date.'
-                // },
+                sector: { required: "Please select the sector type" },
+                order: {
+                    required: "Display order must be a number greater than zero (0)"
+                },
                 new_password: {
                     required: Lang.get('validation.required', { attribute: 'Password' }),
                     passwordrules: 'Please follow rules for password.'
@@ -160,7 +124,7 @@ jQuery(document).ready(function() {
         } else {
             return true;
         }
-    }, "This field is required");
+    }, "Please enter the valid input, Space not allowed");
 
     var isChecked = $('#end_date_time').attr('data-exp');
     if (isChecked == 1) {
@@ -178,7 +142,8 @@ jQuery(document).ready(function() {
 jQuery.validator.addMethod("phoneFormat", function(value, element) {
     // allow any non-whitespace characters as the host part
     return this.optional(element) || /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/.test(value);
-}, 'Please enter a valid phone number.');
+}, 'Please enter phone number in valid format');
+
 jQuery.validator.addMethod("minStrict", function(value, element) {
     if (value > 0) {
         return true;

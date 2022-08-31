@@ -30,12 +30,12 @@ var TeamModule = function() {
                 var iCount = 'item-' + ($('.ui-state-default').length + 1);
 
                 section += '<div class="ui-state-default">';
-                section += '<i title="Drag" class="action-icon move fa fa-arrows-alt"></i>';
+                section += '<i title="Drag" class="action-icon move ri-arrow-left-right-line"></i>';
                 section += '<a href="javascript:;" data-filter="' + template + '" class="close-btn" title="Delete">';
-                section += '<i class="action-icon delete fa fa-trash"></i>';
+                section += '<i class="action-icon delete ri-delete-bin-line"></i>';
                 section += '</a>';
                 section += '<a href="javascript:;" data-filter="' + template + '" title="Edit" data-id="' + iCount + '" class="team-module">';
-                section += '<i class="action-icon edit fa fa-pencil"></i>';
+                section += '<i class="action-icon edit ri-pencil-line"></i>';
                 section += '</a>';
                 section += '<div class="clearfix"></div>';
                 section += '<div class="section-item defoult-module module" data-editor="' + iCount + '">';
@@ -104,12 +104,12 @@ var TeamModule = function() {
             if (edit == 'N') {
                 var iCount = 'item-' + ($('.ui-state-default').length + 1);
                 section += '<div class="ui-state-default">';
-                section += '<i title="Drag" class="action-icon move fa fa-arrows-alt"></i>';
+                section += '<i title="Drag" class="action-icon move ri-arrow-left-right-line"></i>';
                 section += '<a href="javascript:;" data-filter="' + template + '" class="close-btn" title="Delete">';
-                section += '<i class="action-icon delete fa fa-trash"></i>';
+                section += '<i class="action-icon delete ri-delete-bin-line"></i>';
                 section += '</a>';
                 section += '<a href="javascript:;" data-filter="' + template + '" title="Edit" data-id="' + iCount + '" class="team-template">';
-                section += '<i class="action-icon edit fa fa-pencil"></i>';
+                section += '<i class="action-icon edit ri-pencil-line"></i>';
                 section += '</a>';
                 section += '<div class="clearfix"></div>';
                 section += '<div class="defoult-module section-item teamTemplate" data-editor="' + iCount + '">';
@@ -412,6 +412,7 @@ $(document).on('click', '.team-template', function(event) {
     $('#sectionTeamModuleTemplate [data-dismiss="modal"]').attr("data-toggle", "");
     $('#sectionTeamModuleTemplate [data-dismiss="modal"]').attr("data-target", "");
 
+
     $('#pgBuiderSections').modal('hide');
     $('#sectionTeamModuleTemplate').modal('show');
     // $('#sectionTeamModuleTemplate').modal({
@@ -432,7 +433,8 @@ $(document).on('click', '.team-template', function(event) {
         $('#frmSectionTeamModuleTemplate select[name=layoutType] option[value=' + layout + ']').prop('selected', true);
         $('#frmSectionTeamModuleTemplate .config option[value=' + config + ']').prop('selected', true);
         $('#frmSectionTeamModuleTemplate input[name=extra_class]').val(extclass);
-        $('#frmSectionTeamModuleTemplate .addSection').text('Update');
+        // $('#frmSectionTeamModuleTemplate .addSection').text('Update');
+        $('#sectionTeamModuleTemplate .addSection').html('<div class="flex-shrink-0"><i class="ri-pencil-line label-icon align-middle fs-20 me-2"></i></div>Update');
         $('#frmSectionTeamModuleTemplate #exampleModalLabel b').text('Edit Team');
 
     } else {
@@ -442,7 +444,7 @@ $(document).on('click', '.team-template', function(event) {
         $('#frmSectionTeamModuleTemplate input[name=section_title]').val($.trim(value));
         //$('#frmSectionTeamModuleTemplate select[name=layoutType] option:first').prop('selected', true);
         $('#frmSectionTeamModuleTemplate input[name=extra_class]').val('');
-        $('#frmSectionTeamModuleTemplate .addSection').text('Add');
+        $('#sectionTeamModuleTemplate .addSection').html('<div class="flex-shrink-0"><i class="ri-add-line label-icon align-middle fs-20 me-2"></i></div>Add');
         $('#frmSectionTeamModuleTemplate #exampleModalLabel b').text('Add Team');
 
         $('#sectionTeamModuleTemplate [data-dismiss="modal"]').attr("data-toggle", "modal");

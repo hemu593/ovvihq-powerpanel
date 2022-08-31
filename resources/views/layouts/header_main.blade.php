@@ -59,7 +59,7 @@
                                 </div>
                             </li>
                             @if(isset($objContactInfo->varPhoneNo) && !empty($objContactInfo->varPhoneNo))
-                                <li class="contact-link">
+                                <li class="contact-link d-none">
                                     <a href="tel:{{$objContactInfo->varPhoneNo}}" title="Call Us On {{$objContactInfo->varPhoneNo}}" class="link">
                                         <span class="icon"><i class="n-icon" data-icon="s-phone-call"></i></span>
                                         <span class="d-none d-md-inline-block">24 HOUR SERVICE</span>
